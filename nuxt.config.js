@@ -52,7 +52,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: development ? 'http://localhost' : 'https://sample.com',
+    baseURL: development ? 'http://localhost' : 'https://fast-mountain-56075.herokuapp.com',
     credentials: true,
   },
 
