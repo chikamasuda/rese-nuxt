@@ -1,5 +1,5 @@
 <template>
-  <div class="top-wrapper">
+  <div class="top-wrapper mt-4">
     <Logo />
     <div class="text-center wrapper">
       <h1>Rese</h1>
