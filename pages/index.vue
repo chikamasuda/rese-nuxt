@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="d-flex align-center mt-1">
+    <header class="d-flex align-center mt-4">
         <v-row class="align-center">
         <v-col cols="3" class="d-flex search-wrapper text-right">
           <Logo />
@@ -89,7 +89,7 @@ li {
 }
 
 .heart-icon {
-  color: #E0E0E0;;
+  color: #E0E0E0;
 }
 
 .search {
