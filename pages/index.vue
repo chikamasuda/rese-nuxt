@@ -33,7 +33,7 @@
                 <span>#{{ shop.genre.name }}</span>
               </v-card-text>
               <div class="d-flex align-center justify-space-between ml-3 mr-3 pb-2">
-                <v-btn small class=" blue accent-4 white--text" @click="toShow(shop.id)">詳しくみる</v-btn>
+                <v-btn small class=" blue accent-4 white--text" :to="'/detail?id=' + shop.id">詳しくみる</v-btn>
                 <v-icon large class="heart-icon" @click="">mdi-cards-heart</v-icon>
               </div>
             </v-card>
@@ -61,9 +61,6 @@
           console.log(error.response);
         })
       },
-      toShow(id) {
-        this.$router.push(`/shop/${id}/`)
-      }
     },
     created() {
       this.getShopList();
