@@ -2,7 +2,7 @@
 <div>
   <div class="align-center d-flex justify-space-between mt-4">
     <Logo />
-    <PreLoginMenu />
+    <LoginMenu />
   </div>
   <v-card class="mx-auto v-card pb-2 bg-blue">
     <v-card-title class="blue accent-4 white--text">Login</v-card-title>

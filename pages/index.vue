@@ -1,13 +1,18 @@
 <template>
   <div>
-    <header class="d-flex align-center justify-space-between mt-1">
-      <Logo />
-      <v-col cols="12" sm="12" md="6" class="d-flex mt-1 search-wrapper">
-        <v-select label="All area" tile solo class="search search-select"></v-select>
-        <v-select label="All genre" tile solo  class="search search-select"></v-select>
-        <v-text-field label="Search..." solo tile class="search" prepend-inner-icon="mdi-magnify"></v-text-field>
-      </v-col>
-      <AfterLoginMenu />
+    <header class="d-flex align-center mt-1">
+        <v-row class="align-center">
+        <v-col cols="3" class="d-flex search-wrapper text-right">
+          <Logo />
+        </v-col>
+        <v-col cols="9" class="d-flex mt-1 search-wrapper text-right">
+          <v-select label="All area" tile solo class="search search-select"></v-select>
+          <v-select label="All genre" tile solo  class="search search-select"></v-select>
+          <v-text-field label="Search..." solo tile class="search search-text" prepend-inner-icon="mdi-magnify"></v-text-field>
+          <v-btn tile color="blue accent-4 white--text" class="search-btn pl-5 pr-5">検索</v-btn>
+          <LoginMenu class="ml-5 menu" />
+        </v-col>
+        </v-row>
     </header>
     <ul class="photo-list mb-5">
       <li>
@@ -28,7 +33,7 @@
                 <span>#{{ shop.genre.name }}</span>
               </v-card-text>
               <div class="d-flex align-center justify-space-between ml-3 mr-3 pb-2">
-                <v-btn small class=" blue accent-4 white--text">詳しくみる</v-btn>
+                <v-btn small class=" blue accent-4 white--text" @click="toShow(shop.id)">詳しくみる</v-btn>
                 <v-icon large class="heart-icon" @click="">mdi-cards-heart</v-icon>
               </div>
             </v-card>
@@ -41,7 +46,6 @@
 
 <script>
   export default {
-    middleware: 'auth',
     data() {
       return {
         shopList: '',
@@ -57,6 +61,9 @@
           console.log(error.response);
         })
       },
+      toShow(id) {
+        this.$router.push(`/shop/${id}/`)
+      }
     },
     created() {
       this.getShopList();
@@ -93,12 +100,19 @@ li {
 }
 
 .search-select {
-  width: 5%;
+  width: 15%;
 }
 
-.search-wrapper {
-  margin-left: 200px;
+.search-btn {
+  min-height: 49px;
+  width: 80px;
 }
+
+.menu {
+  height: 36px;
+  margin-top: 7px;
+}
+
 </style>
 <style>
 .v-text-field.v-text-field--solo.v-input--dense > .v-input__control {
