@@ -23,7 +23,6 @@
               <v-img
                 :src="`${shop.image_url}`"
                 height="150"
-
               ></v-img>
               <v-card-title class="text-h6 mt-2">
                 {{ shop.name }}
@@ -34,8 +33,12 @@
               </v-card-text>
               <div class="d-flex align-center justify-space-between ml-3 mr-3 pb-2">
                 <v-btn small class=" blue accent-4 white--text" :to="'/detail?id=' + shop.id">詳しくみる</v-btn>
-                <v-icon large color="grey lighten-2" @click="">mdi-cards-heart</v-icon>
-                <v-icon large color="red" @click="">mdi-cards-heart</v-icon>
+                <v-icon v-if="shop.favorites.find(e => e.user_id == $auth.user.id)" large color="red" @click="unlike(shop)">
+                  mdi-cards-heart
+                </v-icon>
+                <v-icon v-else large color="grey lighten-2" @click="like(shop)">
+                  mdi-cards-heart
+                </v-icon>
               </div>
             </v-card>
           </v-col>
@@ -56,11 +59,34 @@
       async getShopList() {
         await this.$axios.get('/api/v1/shops')
         .then((response) => {
-          this.shopList = response.data.shops;
+          this.shopList = response.data.shops
         })
         .catch((error) => {
-          console.log(error.response);
+          console.log(error.response)
         })
+      },
+      async like(shop) {
+        const body = {
+          shop_id: shop.id,
+          user_id: this.$auth.user.id
+        }
+        await this.$axios.post("/api/v1/favorites/", body)
+        .then((response) => {
+          console.log(response)
+          shop.favorites.push(response.data.favorites)
+        })
+        .catch((error) => {
+          console.log(error.response)
+        })
+      },
+      async unlike(shop) {
+        const findLike = shop.favorites.find((e) => e.user_id === this.$auth.user.id);
+        console.log(findLike);
+        await this.$axios.delete(`/api/v1/favorites/${findLike.id}`);
+        const findLikeIdx = shop.favorites.findIndex(
+          (e) => e.id === findLike.id
+        );
+        shop.favorites.splice(findLikeIdx, 1);
       },
     },
     created() {

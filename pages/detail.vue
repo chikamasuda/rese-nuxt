@@ -79,7 +79,8 @@
                 class="mt-5"
               ></v-select>
             </v-card-text>
-            <v-card  class="ml-4 mr-4 mt-5">
+            <v-card class="ml-4 mr-4 mt-5">
+              <v-card-title>予約内容</v-card-title>
               <v-simple-table class="table">
                 <tbody>
                   <tr>
@@ -102,7 +103,7 @@
               </v-simple-table>
             </v-card>
             <div class="text-center mt-5 pb-5 pt-3 mb-5">
-              <v-btn class="primary pl-5 pr-5 white--text reserve-button">予約する</v-btn>
+              <v-btn class="blue accent-4 pl-5 pr-5 white--text reserve-button">予約する</v-btn>
             </div>
           </v-card>
         </v-col>
@@ -160,20 +161,19 @@ export default {
   min-width: 40px!important;
   padding: 0 8px!important;
 }
+
 .v-text-field {
   padding-top: 0;
   margin-top: 0;
 }
+
 .reserve-button {
   width: 40%;
 }
+
 th, td {
   border-bottom: none!important;  
 }
-.table {
-  background:#E3F2FD;
-}
-
 </style>
 
 <style>
