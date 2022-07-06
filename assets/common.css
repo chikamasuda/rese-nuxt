@@ -1,0 +1,22 @@
+li {
+  list-style: none;
+}
+
+.heart-icon {
+  color: #E0E0E0;
+}
+
+.menu {
+  height: 36px;
+  margin-top: 7px;
+}
+
+.v-text-field.v-text-field--solo.v-input--dense>.v-input__control {
+  max-height: 40px;
+}
+
+.v-text-field.v-text-field--enclosed .v-text-field__details {
+  padding-top: 0px;
+  margin-bottom: 8px;
+  display: none;
+}

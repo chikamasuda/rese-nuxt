@@ -20,7 +20,18 @@
         </v-col>
         <v-spacer />
         <v-col cols="5">
-          <v-card>
+          <v-card v-if="!$auth.loggedIn">
+            <v-card-title>予約</v-card-title>
+            <v-divider></v-divider>
+            <v-card-text>
+              ログインしていないため予約できません。
+              予約する場合は以下のボタンをクリックしてログインしてください。
+            </v-card-text>
+            <div class="text-center pb-5">
+              <v-btn color="blue accent-4 white--text pl-5 pr-5" to="/login">ログイン</v-btn>
+            </div>
+          </v-card>
+          <v-card v-if="$auth.loggedIn">
             <v-card-title>予約</v-card-title>
             <v-divider></v-divider>
             <v-card-text>
@@ -44,6 +55,7 @@
               </template>
               <v-date-picker
                 v-model="date"
+                no-title
                 @input="menu = false"
                 locale="ja-jp"
               ></v-date-picker>
@@ -67,7 +79,7 @@
                 class="mt-5"
               ></v-select>
             </v-card-text>
-            <v-card  class="ml-4 mr-4 mt-5" color="blue">
+            <v-card  class="ml-4 mr-4 mt-5">
               <v-simple-table class="table">
                 <tbody>
                   <tr>
@@ -143,7 +155,7 @@ export default {
 </script>
 
 <style scoped>
-.v-btn:not(.v-btn--round).v-size--default {
+.pre-btn {
   height: 36px;
   min-width: 40px!important;
   padding: 0 8px!important;
@@ -161,6 +173,7 @@ th, td {
 .table {
   background:#E3F2FD;
 }
+
 </style>
 
 <style>

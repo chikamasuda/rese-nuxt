@@ -34,7 +34,8 @@
               </v-card-text>
               <div class="d-flex align-center justify-space-between ml-3 mr-3 pb-2">
                 <v-btn small class=" blue accent-4 white--text" :to="'/detail?id=' + shop.id">詳しくみる</v-btn>
-                <v-icon large class="heart-icon" @click="">mdi-cards-heart</v-icon>
+                <v-icon large color="grey lighten-2" @click="">mdi-cards-heart</v-icon>
+                <v-icon large color="red" @click="">mdi-cards-heart</v-icon>
               </div>
             </v-card>
           </v-col>
@@ -69,16 +70,12 @@
 </script>
 
 <style scoped>
-li {
-  list-style: none;
-  
-}
 .photo-list {
   padding: 0;
   margin-top: 30px;
 }
 
-.v-card__subtitle, .v-card__text, .v-card__title {
+.v-card__title {
   padding: 0 16px;
 }
 
@@ -86,10 +83,7 @@ li {
   width: 100%;
   font-size: 11px;
   font-weight: normal;
-}
-
-.heart-icon {
-  color: #E0E0E0;
+  padding-bottom: 3px;
 }
 
 .search {
@@ -103,21 +97,5 @@ li {
 .search-btn {
   min-height: 49px;
   width: 80px;
-}
-
-.menu {
-  height: 36px;
-  margin-top: 7px;
-}
-
-</style>
-<style>
-.v-text-field.v-text-field--solo.v-input--dense > .v-input__control {
-  max-height: 40px;
-}
-.v-text-field.v-text-field--enclosed .v-text-field__details {
-  padding-top: 0px;
-  margin-bottom: 8px;
-  display: none;
 }
 </style>
