@@ -62,6 +62,7 @@
               </v-menu>
               <v-select
               v-model="time"
+              :items="times"
               menu-props="auto"
               placeholder="予約時間"
               hide-details
@@ -71,6 +72,7 @@
               ></v-select>
               <v-select
                 v-model="number"
+                :items= "numbers"
                 menu-props="auto"
                 placeholder="人数"
                 hide-details
@@ -93,17 +95,17 @@
                   </tr>
                   <tr>
                     <th class="text-left bg-gray" with="15%">Time</th>
-                    <td class="bg-white"></td>
+                    <td class="bg-white">{{ time }}</td>
                   </tr>
                   <tr>
                     <th class="text-left bg-gray" with="15%">Number</th>
-                    <td class="bg-white"></td>
+                    <td class="bg-white">{{ number }}</td>
                   </tr>
                 </tbody>
               </v-simple-table>
             </v-card>
             <div class="text-center mt-5 pb-5 pt-3 mb-5">
-              <v-btn class="blue accent-4 pl-5 pr-5 white--text reserve-button">予約する</v-btn>
+              <v-btn class="blue accent-4 pl-5 pr-5 white--text reserve-button" @click="addReservation(shop)">予約する</v-btn>
             </div>
           </v-card>
         </v-col>
@@ -121,6 +123,8 @@ export default {
         menu: false,
         time: "",
         number: "",
+        times: ['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00'],
+        numbers: ['1名', '2名', '3名', '4名', '5名', '6名', '7名', '8名', '9名', '10名']
       };
     },
     methods: {
@@ -142,6 +146,22 @@ export default {
         if(day.charAt(0) == 0) day = day.slice(-1)
           
         return `${year}年${month}月${day}日`
+      },
+      async addReservation(shop) {
+        const data = {
+          shop_id: shop.id,
+          user_id: this.$auth.user.id,
+          date: this.date,
+          number: this.number
+        }
+        await this.$axios.post(`/api/v1/shops/${this.$route.query.id}`)
+        .then((response) => {
+          this.shop = response.data.shop[0];
+          console.log(this.shop)
+        })
+        .catch((error) => {
+          console.log(error.response);
+        })
       },
     },
     computed: {

@@ -94,7 +94,7 @@
             shop_id: shop.id,
             user_id: this.$auth.user.id
           }
-          await this.$axios.post("/api/v1/favorites/", body)
+          await this.$axios.post("/api/v1/favorites", body)
             .then((response) => {
               console.log(response)
               shop.favorites.push(response.data.favorites)

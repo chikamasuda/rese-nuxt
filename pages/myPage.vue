@@ -19,7 +19,7 @@
                 <tbody>
                   <tr>
                     <th class="text-left bg-gray border-top" width="15%">Shop</th>
-                    <td class="border-top bg-white">{{ reservation.shop.name }}</td>
+                    <td class="border-top bg-white">{{ reservation.shops.name }}</td>
                   </tr>
                   <tr>
                     <th class="text-left bg-gray" with="15%">Date</th>
