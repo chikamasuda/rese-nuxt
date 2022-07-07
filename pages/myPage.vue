@@ -6,6 +6,17 @@
     </div>
     <h2 class="mt-5 pt-5">{{ $auth.user.name }}さん</h2>
     <v-row class="mb-5">
+      <v-overlay :value="cancelOverlay">
+        <v-card light class="pb-3 pt-5 pr-5 pl-5">
+          <div class="">
+            予約{{ index }}を取り消します。よろしいですか？
+          </div>
+          <div class="text-center pb-3 mt-5">
+            <v-btn color="blue accent-4 white--text pl-5 pr-5 mr-2" @click="cancelReservation(reservation_id)">取り消しする</v-btn>
+            <v-btn color="black white--text" @click="closeCancelOverlay()">キャンセル</v-btn>
+          </div>
+        </v-card>
+      </v-overlay>
       <v-col cols="5">
         <h3 class="mt-5 mb-3">予約状況</h3>
         <v-row>
@@ -37,7 +48,7 @@
               </v-simple-table>
               <div class="text-center pb-3 pt-3">
                 <v-btn small color="blue accent-4 white--text" class="mr-2">予約変更</v-btn>
-                <v-btn small color="blue accent-4 white--text">予約を取り消す</v-btn>
+                <v-btn small color="blue accent-4 white--text" @click="openCancelOverlay(index, reservation.id)">予約を取り消す</v-btn>
               </div>
             </v-card>
           </v-col>
@@ -56,7 +67,7 @@
               <v-card-title class="text-h6 mt-2">
                 {{ favorite.shops.name }}
               </v-card-title>
-              <v-card-text class="mr-2 black--text">
+              <v-card-text class="mr-2 black--text card-text">
                 <span>#{{ favorite.shops.area.name }}</span>
                 <span>#{{ favorite.shops.genre.name }}</span>
               </v-card-text>
@@ -80,6 +91,9 @@ export default {
     return {
       favorites: [],
       reservations: [],
+      cancelOverlay: false,
+      index: '',
+      reservation_id: "",
     };
   },
   methods: {
@@ -126,10 +140,29 @@ export default {
         console.log(error.response)
       })
     },
+    openCancelOverlay(index, id) {
+      this.cancelOverlay = true
+      this.index = index + 1
+      this.reservation_id = id
+    },
+    closeCancelOverlay() {
+      this.cancelOverlay = false
+    },
+    async cancelReservation(id) {
+      await this.$axios.delete('/api/v1/reservations/' + id)
+      .then((response) => {
+        this.cancelOverlay = false
+        const findIdx = this.reservations.findIndex((e) => e.id === id)
+        this.reservations.splice(findIdx, 1)
+      })
+      .catch((error) => {
+        console.log(error.response)
+      })
+    },
   },
   created() {
-    this.getReservations();
-    this.getFavorites();
+    this.getReservations()
+    this.getFavorites()
   }
 }
 </script>
@@ -143,7 +176,7 @@ th, td {
   padding: 0 16px;
 }
 
-.v-card__text {
+.card-text {
   width: 100%;
   font-size: 11px;
   font-weight: normal;

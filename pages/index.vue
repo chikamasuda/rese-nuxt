@@ -6,10 +6,10 @@
           <Logo />
         </v-col>
         <v-col cols="9" class="d-flex mt-1 search-wrapper text-right">
-          <v-select label="All area" tile solo class="search search-select"></v-select>
-          <v-select label="All genre" tile solo  class="search search-select"></v-select>
-          <v-text-field label="Search..." solo tile class="search search-text" prepend-inner-icon="mdi-magnify"></v-text-field>
-          <v-btn tile color="blue accent-4 white--text" class="search-btn pl-5 pr-5">検索</v-btn>
+          <v-select label="All area" tile solo class="search search-select" v-model="area" :items= "areas"></v-select>
+          <v-select label="All genre" tile solo  class="search search-select" v-model="genre" :items= "genres"></v-select>
+          <v-text-field label="Search..." solo tile class="search search-text" prepend-inner-icon="mdi-magnify" v-model="keyword"></v-text-field>
+          <v-btn tile color="blue accent-4 white--text" class="search-btn pl-5 pr-5" @click="searchShopList(area, genre, keyword)">検索</v-btn>
           <LoginMenu class="ml-5 menu" />
         </v-col>
         </v-row>
@@ -72,8 +72,13 @@
   export default {
     data() {
       return {
-        shopList: '',
+        shopList: [],
         overlay: false,
+        areas: [],
+        genres: [],
+        area: '',
+        genre: '',
+        keyword: '',
       };
     },
     methods: {
@@ -81,6 +86,8 @@
         await this.$axios.get('/api/v1/shops')
         .then((response) => {
           this.shopList = response.data.shops
+          this.genres = response.data.genres
+          this.areas = response.data.areas
         })
         .catch((error) => {
           console.log(error.response)
@@ -111,6 +118,17 @@
         .then((response) => {
           const findLikeIdx = shop.favorites.findIndex((e) => e.id === findLike.id)
           shop.favorites.splice(findLikeIdx, 1)
+        })
+        .catch((error) => {
+          console.log(error.response)
+        })
+      },
+      async searchShopList(area, genre, keyword) {
+        const area_id = this.areas.indexOf(area) + 1
+        const genre_id = this.genres.indexOf(genre) + 1
+        await this.$axios.get('/api/v1/search?keyword=' + keyword + '&area_id=' + area_id + '&genre_id=' + genre_id)
+        .then((response) => {
+          this.shopList = response.data.shops
         })
         .catch((error) => {
           console.log(error.response)
@@ -148,7 +166,7 @@
 }
 
 .search-select {
-  width: 15%;
+  width: 20%;
 }
 
 .search-btn {

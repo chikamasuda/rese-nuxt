@@ -124,10 +124,21 @@ export default {
         time: "",
         number: "",
         times: ['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00'],
-        numbers: ['1名', '2名', '3名', '4名', '5名', '6名', '7名', '8名', '9名', '10名']
+        numbers: ['1名', '2名', '3名', '4名', '5名', '6名', '7名', '8名', '9名', '10名'],
+        reservations: [],
       };
     },
     methods: {
+      async getReservations() {
+        await this.$axios.get(`/api/v1/users/${this.$auth.user.id}/reservations`)
+        .then((response) => {
+          this.reservations = response.data.reservations;
+          console.log(this.reservations);
+        })
+        .catch((error) => {
+          console.log(error.response);
+        })
+      },
       async getShop() {
         await this.$axios.get(`/api/v1/shops/${this.$route.query.id}`)
         .then((response) => {
@@ -151,13 +162,13 @@ export default {
         const data = {
           shop_id: shop.id,
           user_id: this.$auth.user.id,
-          date: this.date,
-          number: this.number
+          date: this.date + '\t' + this.time,
+          number: this.number.slice(0, -1)
         }
-        await this.$axios.post(`/api/v1/shops/${this.$route.query.id}`)
+        await this.$axios.post('/api/v1/reservations', data)
         .then((response) => {
-          this.shop = response.data.shop[0];
-          console.log(this.shop)
+          this.reservations.push(response.data.reservations)
+          this.$router.push("/done")
         })
         .catch((error) => {
           console.log(error.response);
@@ -171,6 +182,7 @@ export default {
     },
     created() {
       this.getShop();
+      this.getReservations();
     }
 }
 </script>
