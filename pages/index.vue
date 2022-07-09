@@ -6,8 +6,8 @@
           <Logo />
         </v-col>
         <v-col cols="9" class="d-flex mt-1 search-wrapper text-right">
-          <v-select label="All area" tile solo class="search search-select" v-model="area" :items= "areas"></v-select>
-          <v-select label="All genre" tile solo  class="search search-select" v-model="genre" :items= "genres"></v-select>
+          <v-select tile solo label="All area" class="search search-select" v-model="area" :items= "areas"></v-select>
+          <v-select tile solo label="All genre" class="search search-select" v-model="genre" :items= "genres"></v-select>
           <v-text-field label="Search..." solo tile class="search search-text" prepend-inner-icon="mdi-magnify" v-model="keyword"></v-text-field>
           <v-btn tile color="blue accent-4 white--text" class="search-btn pl-5 pr-5" @click="searchShopList(area, genre, keyword)">検索</v-btn>
           <LoginMenu class="ml-5 menu" />
@@ -74,7 +74,7 @@
       return {
         shopList: [],
         overlay: false,
-        areas: [],
+        areas: ['All area', '東京'],
         genres: [],
         area: '',
         genre: '',
@@ -87,7 +87,9 @@
         .then((response) => {
           this.shopList = response.data.shops
           this.genres = response.data.genres
+          this.genres.unshift('All genre')
           this.areas = response.data.areas
+          this.areas.unshift('All area')
         })
         .catch((error) => {
           console.log(error.response)
@@ -124,9 +126,7 @@
         })
       },
       async searchShopList(area, genre, keyword) {
-        const area_id = this.areas.indexOf(area) + 1
-        const genre_id = this.genres.indexOf(genre) + 1
-        await this.$axios.get('/api/v1/search?keyword=' + keyword + '&area_id=' + area_id + '&genre_id=' + genre_id)
+        await this.$axios.get('/api/v1/shops/search?keyword=' + keyword + '&area=' + area + '&genre=' + genre)
         .then((response) => {
           this.shopList = response.data.shops
         })
