@@ -162,7 +162,7 @@
 }
 
 .search-select {
-  width: 20%;
+  width: 15%;
 }
 
 .search-btn {
