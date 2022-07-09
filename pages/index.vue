@@ -74,8 +74,8 @@
       return {
         shopList: [],
         overlay: false,
-        areas: ['All area', '東京'],
-        genres: [],
+        areas: ['All area', '東京都', '大阪府', '福岡県'],
+        genres: ['All genre', '寿司', '焼肉', '居酒屋', 'イタリアン', 'ラーメン'],
         area: '',
         genre: '',
         keyword: '',
@@ -86,10 +86,6 @@
         await this.$axios.get('/api/v1/shops')
         .then((response) => {
           this.shopList = response.data.shops
-          this.genres = response.data.genres
-          this.genres.unshift('All genre')
-          this.areas = response.data.areas
-          this.areas.unshift('All area')
         })
         .catch((error) => {
           console.log(error.response)
