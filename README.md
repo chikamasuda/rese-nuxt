@@ -8,7 +8,7 @@
 git clone https://github.com/chikamasuda/rese-nuxt.git
 ```
 
-②win6-nuxtのディレクトリまで移動し、依存関係をインストール
+②rese-nuxtのディレクトリまで移動し、依存関係をインストール
 ```
 yarn install
 ```
