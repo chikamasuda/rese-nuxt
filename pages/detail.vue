@@ -68,7 +68,7 @@
               hide-details
               prepend-icon="mdi-clock"
               single-line
-              class="mb-5 pb-1"
+              class="mb-5 pb-1 mt-4"
               ></v-select>
               <v-select
                 v-model="number"
