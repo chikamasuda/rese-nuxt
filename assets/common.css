@@ -20,3 +20,7 @@ li {
   margin-bottom: 8px;
   display: none;
 }
+
+.v-text-field__details {
+  display: none !important;
+}

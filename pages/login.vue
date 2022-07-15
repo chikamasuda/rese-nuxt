@@ -10,9 +10,14 @@
     <v-card-text>
       <v-form @submit.prevent="login" method="POST">
         <v-text-field type="email" v-model="form.email" dense required prepend-icon="mdi-email"/>
-        <v-text-field type="password" v-model="form.password" dense required prepend-icon="mdi-lock"/>
-        <span class="red--text">{{ error }}</span>
-        <div class="text-right mt-2 align-center">
+        <ul class="red--text ml-2" v-for="error in emailError" :key="error.id">
+          <li>{{ error }}</li>
+        </ul>
+        <v-text-field type="password" v-model="form.password" dense required prepend-icon="mdi-lock" class="mt-3"/>
+        <ul class="red--text ml-2" v-for="error in passwordError" :key="error.id">
+          <li>{{ error }}</li>
+        </ul>
+        <div class="text-right mt-5 align-center">
           <NuxtLink to="/register" class="mr-5">会員登録はこちら</NuxtLink>
           <v-btn class="blue accent-4 white--text" type="submit">ログイン</v-btn>
         </div>
@@ -31,7 +36,8 @@ export default {
         email: '',
         password: '',
       },
-      error: '',
+      emailError: [],
+      passwordError: [],
     };
   },
   methods: {
@@ -44,6 +50,7 @@ export default {
         .catch((error) => {
           this.emailError = error.response.data.data.errors['email'];
           this.passwordError = error.response.data.data.errors['password'];
+          console.log(this.passwordErrors)
           console.log(error)
         })
     },
@@ -61,5 +68,16 @@ a {
 }
 .menu-link {
   color: #333;
+}
+@media screen and (max-width: 768px) {
+  .v-card {
+    margin-top: 50px;
+    width: 100%;
+  }
+}
+</style>
+<style>
+.v-text-field__details {
+  display: none!important;
 }
 </style>

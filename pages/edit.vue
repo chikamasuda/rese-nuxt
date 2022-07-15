@@ -60,7 +60,7 @@
               <tbody>
                 <tr>
                   <th class="text-left bg-gray border-top">店名</th>
-                  <td class="border-top bg-white">{{ shop.name }}</td>
+                  <td class="border-top bg-white" v-if="reservation.shops">{{ reservation.shops.name }}</td>
                 </tr>
                 <tr>
                   <th class="text-left bg-gray">予約日</th>
@@ -116,15 +116,6 @@ export default {
         console.log(error.response);
       })
     },
-    async getShop() {
-      await this.$axios.get(`/api/v1/shops/${this.$route.query.id}`)
-      .then((response) => {
-        this.shop = response.data.shop[0];
-      })
-      .catch((error) => {
-        console.log(error.response);
-      })
-    },
     formatDate (date) {
       if (!date) return null
       let [year, month, day] = date.split('-')
@@ -136,8 +127,8 @@ export default {
     },
     async updateReservation() {
       const data = {
-        shop_id: this.shop.id,
         user_id: this.$auth.user.id,
+        shop_id: this.reservation.shops.id,
         date: this.date + '\t' + this.time,
         number: this.number.slice(0, -1)
       }
@@ -156,7 +147,6 @@ export default {
     },
   },
   created() {
-    this.getShop()
     this.getReservation()
   },
 }
