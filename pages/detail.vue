@@ -86,19 +86,19 @@
               <v-simple-table class="table">
                 <tbody>
                   <tr>
-                    <th class="text-left bg-gray border-top" width="10%">Shop</th>
+                    <th class="text-left bg-gray border-top">店名</th>
                     <td class="border-top bg-white">{{ shop.name }}</td>
                   </tr>
                   <tr>
-                    <th class="text-left bg-gray" with="15%">Date</th>
+                    <th class="text-left bg-gray">予約日</th>
                     <td class="bg-white">{{computedDateFormatted }}</td>
                   </tr>
                   <tr>
-                    <th class="text-left bg-gray" with="15%">Time</th>
+                    <th class="text-left bg-gray">時間</th>
                     <td class="bg-white">{{ time }}</td>
                   </tr>
                   <tr>
-                    <th class="text-left bg-gray" with="15%">Number</th>
+                    <th class="text-left bg-gray">人数</th>
                     <td class="bg-white">{{ number }}</td>
                   </tr>
                 </tbody>
@@ -205,6 +205,10 @@ export default {
 
 th, td {
   border-bottom: none!important;  
+}
+
+th {
+  width: 20%;
 }
 </style>
 

@@ -29,7 +29,7 @@
           <v-list-item link to="/">
             <v-list-item-title>ホーム</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/myPage">
+          <v-list-item link to="/mypage">
             <v-list-item-title>マイページ</v-list-item-title>
           </v-list-item>
           <v-list-item @click="logout()">

@@ -29,25 +29,25 @@
               <v-simple-table class="table">
                 <tbody>
                   <tr>
-                    <th class="text-left bg-gray border-top" width="15%">Shop</th>
+                    <th class="text-left bg-gray border-top">店名</th>
                     <td class="border-top bg-white">{{ reservation.shops.name }}</td>
                   </tr>
                   <tr>
-                    <th class="text-left bg-gray" with="15%">Date</th>
-                    <td class="bg-white">{{ $dateFns.format(new Date(reservation.date.substr(0,10)), 'M/d') }}</td>
+                    <th class="text-left bg-gray">予約日</th>
+                    <td class="bg-white">{{ $dateFns.format(new Date(reservation.date.substr(0,10)), 'Y年M月d日') }}</td>
                   </tr>
                   <tr>
-                    <th class="text-left bg-gray" with="15%">Time</th>
+                    <th class="text-left bg-gray">時間</th>
                     <td class="bg-white">{{ $dateFns.format(new Date(reservation.date), 'H:mm') }}</td>
                   </tr>
                   <tr>
-                    <th class="text-left bg-gray" with="15%">Number</th>
+                    <th class="text-left bg-gray">人数</th>
                     <td class="bg-white">{{ reservation.number }}人</td>
                   </tr>
                 </tbody>
               </v-simple-table>
               <div class="text-center pb-3 pt-3">
-                <v-btn small color="blue accent-4 white--text" class="mr-2">予約変更</v-btn>
+                <v-btn small color="blue accent-4 white--text" class="mr-2" :to="'/edit?id=' + reservation.id">予約変更</v-btn>
                 <v-btn small color="blue accent-4 white--text" @click="openCancelOverlay(index, reservation.id)">予約を取り消す</v-btn>
               </div>
             </v-card>
@@ -189,5 +189,9 @@ th, td {
 
 .photo-card {
   height: 260px;
+}
+
+th {
+  width: 20%;
 }
 </style>

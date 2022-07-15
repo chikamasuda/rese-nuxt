@@ -42,8 +42,9 @@ export default {
           this.$router.push('/');
         })
         .catch((error) => {
-          this.error = "メールアドレスとパスワードをご確認ください。"
-          console.log(error.response);
+          this.emailError = error.response.data.data.errors['email'];
+          this.passwordError = error.response.data.data.errors['password'];
+          console.log(error)
         })
     },
   },
