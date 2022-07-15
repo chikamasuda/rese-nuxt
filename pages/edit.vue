@@ -35,6 +35,9 @@
                 locale="ja-jp"
               ></v-date-picker>
             </v-menu>
+            <ul class="red--text ml-2" v-for="error in dateError" :key="error.id">
+              <li>{{ error }}</li>
+            </ul>
             <v-select
               v-model="time"
               :items="times"
@@ -45,6 +48,9 @@
               single-line
               class="mb-5 pb-1 mt-3"
             ></v-select>
+            <ul class="red--text ml-2" v-for="error in dateError" :key="error.id">
+              <li>{{ error }}</li>
+            </ul>
             <v-select
               v-model="number"
               :items= "numbers"
@@ -53,6 +59,9 @@
               prepend-icon="mdi-account"
               class="mt-5"
             ></v-select>
+            <ul class="red--text ml-2" v-for="error in numberError" :key="error.id">
+              <li>{{ error }}</li>
+            </ul>
           </v-card-text>
           <v-card class="ml-4 mr-4 mt-3">
             <v-card-title>予約内容確認</v-card-title>
@@ -100,6 +109,8 @@ export default {
       shop: '',
       times: ['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00'],
       numbers: ['1名', '2名', '3名', '4名', '5名', '6名', '7名', '8名', '9名', '10名'],
+      dateError: "",
+      numberError: "",
     };
   },
   methods: {
@@ -126,10 +137,12 @@ export default {
       return `${year}年${month}月${day}日`
     },
     async updateReservation() {
+      let date = [this.date, this.time]
+      const datetime = date.join(" ")
       const data = {
         user_id: this.$auth.user.id,
         shop_id: this.reservation.shops.id,
-        date: this.date + '\t' + this.time,
+        date: datetime,
         number: this.number.slice(0, -1)
       }
       await this.$axios.put('/api/v1/reservations/' + this.reservation.id, data)
@@ -137,7 +150,9 @@ export default {
         this.$router.push("/edit-done")
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log(error.response)
+        this.dateError = error.response.data.data.errors['date']
+        this.numberError = error.response.data.data.errors['number']
       })
     },
   },

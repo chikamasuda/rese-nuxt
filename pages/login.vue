@@ -17,6 +17,7 @@
         <ul class="red--text ml-2" v-for="error in passwordError" :key="error.id">
           <li>{{ error }}</li>
         </ul>
+        <p class="red--text ml-5 pl-3">{{ error }}</p>
         <div class="text-right mt-5 align-center">
           <NuxtLink to="/register" class="mr-5">会員登録はこちら</NuxtLink>
           <v-btn class="blue accent-4 white--text" type="submit">ログイン</v-btn>
@@ -38,6 +39,7 @@ export default {
       },
       emailError: [],
       passwordError: [],
+      error: '',
     };
   },
   methods: {
@@ -48,10 +50,12 @@ export default {
           this.$router.push('/');
         })
         .catch((error) => {
+          if(error.response.status == "401") {
+            this.error = "Eメールかパスワードの入力に誤りがあります。"
+          }
           this.emailError = error.response.data.data.errors['email'];
           this.passwordError = error.response.data.data.errors['password'];
-          console.log(this.passwordErrors)
-          console.log(error)
+          console.log(error.response.status)
         })
     },
   },
@@ -70,6 +74,12 @@ a {
   color: #333;
 }
 @media screen and (max-width: 768px) {
+  .v-card {
+    margin-top: 50px;
+    width: 70%;
+  }
+}
+@media screen and (max-width: 414px) {
   .v-card {
     margin-top: 50px;
     width: 100%;
