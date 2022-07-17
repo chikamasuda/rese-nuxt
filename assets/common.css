@@ -31,7 +31,7 @@ a {
 }
 
 .v-text-field__details {
-  display: none !important;
+  display: none!important;
 }
 
 /** ログイン、会員登録 **/
@@ -43,17 +43,17 @@ a {
 /** トップページ **/
 .shop-text {
   width: 100%;
-  font-size: 11px !important;
+  font-size: 11px!important;
   font-weight: normal;
-  padding-bottom: 3px !important;
+  padding-bottom: 3px!important;
 }
 
 .shop-title {
-  padding: 0 16px !important;
+  padding: 0 16px!important;
 }
 
 .search-pc {
-  border-radius: 0 !important;
+  border-radius: 0!important;
 }
 
 .search-select {
@@ -66,16 +66,16 @@ a {
 }
 
 .search-sm {
-  display: none !important;
+  display: none!important;
   margin-top: 0;
 }
 
 .search-xs {
-  display: none !important;
+  display: none!important;
 }
 
 .shop-list {
-  padding: 0 !important;
+  padding: 0!important;
   margin-top: 30px;
 }
 
@@ -85,7 +85,7 @@ a {
 }
 
 .reservation-table th, .reservation-table td {
-  border-bottom: none !important;
+  border-bottom: none!important;
 }
 
 .reservation-table th {
@@ -94,8 +94,8 @@ a {
 
 .pre-btn {
   height: 36px;
-  min-width: 40px !important;
-  padding: 0 8px !important;
+  min-width: 40px!important;
+  padding: 0 8px!important;
 }
 
 /** done, thankesページなど **/
@@ -134,7 +134,7 @@ a {
 
   /** トップページ **/
   .search-pc {
-    display: none !important;
+    display: none!important;
   }
 
   .seach-wrapper {
@@ -147,9 +147,9 @@ a {
   }
 
   .search-sm {
-    display: block !important;
-    border-radius: 0 !important;
-    margin-top: 10px !important;
+    display: block!important;
+    border-radius: 0!important;
+    margin-top: 10px!important;
   }
 
   .search-select {
@@ -180,12 +180,12 @@ a {
 
   /** トップページ **/
   .search-sm {
-    display: none !important;
+    display: none!important;
   }
 
   .search-xs {
-    display: block !important;
-    border-radius: 5px !important;
+    display: block!important;
+    border-radius: 5px!important;
   }
 
   .photo-list {
@@ -195,10 +195,12 @@ a {
 
   .search-select {
     width: 25%;
+    border-radius: 0!important;
   }
 
   .search-text {
     width: 100%;
+    border-radius: 0!important;
   }
 
   .search-xs-btn {
