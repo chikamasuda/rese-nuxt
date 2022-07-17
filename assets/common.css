@@ -1,5 +1,10 @@
+/** 共通 **/
 li {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .heart-icon {
@@ -21,6 +26,190 @@ li {
   display: none;
 }
 
+.menu-link {
+  color: #333;
+}
+
 .v-text-field__details {
   display: none !important;
+}
+
+/** ログイン、会員登録 **/
+.auth-card {
+  margin-top: 150px;
+  width: 40%;
+}
+
+/** トップページ **/
+.shop-text {
+  width: 100%;
+  font-size: 11px !important;
+  font-weight: normal;
+  padding-bottom: 3px !important;
+}
+
+.shop-title {
+  padding: 0 16px !important;
+}
+
+.search-pc {
+  border-radius: 0 !important;
+}
+
+.search-select {
+  width: 15%;
+}
+
+.search-btn {
+  min-height: 49px;
+  width: 80px;
+}
+
+.search-sm {
+  display: none !important;
+  margin-top: 0;
+}
+
+.search-xs {
+  display: none !important;
+}
+
+.shop-list {
+  padding: 0 !important;
+  margin-top: 30px;
+}
+
+/** 店舗詳細ページ **/
+.reserve-button {
+  width: 40%;
+}
+
+.reservation-table th, .reservation-table td {
+  border-bottom: none !important;
+}
+
+.reservation-table th {
+  width: 25%;
+}
+
+.pre-btn {
+  height: 36px;
+  min-width: 40px !important;
+  padding: 0 8px !important;
+}
+
+/** done, thankesページなど **/
+.message-card {
+  padding: 80px 20px;
+  margin-top: 150px;
+  width: 35%;
+}
+
+.thanks-text {
+  font-size: 22px;
+  font-weight: medium;
+  color: #000;
+}
+
+/** マイページ **/
+.favorite-card {
+  height: 300px;
+}
+
+.shop-card {
+  height: 260px;
+}
+
+@media screen and (max-width: 768px) {
+  /** 共通 **/
+  .menu {
+    min-height: 44px;
+  }
+
+  /** 会員登録、ログイン **/
+  .auth-card {
+    margin-top: 50px;
+    width: 50%;
+  }
+
+  /** トップページ **/
+  .search-pc {
+    display: none !important;
+  }
+
+  .seach-wrapper {
+    vertical-align: middle;
+  }
+
+  .photo-list {
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  .search-sm {
+    display: block !important;
+    border-radius: 0 !important;
+    margin-top: 10px !important;
+  }
+
+  .search-select {
+    width: 33%;
+  }
+
+  .search-text {
+    width: 33%;
+  }
+
+  .search-btn {
+    min-height: 49px !;
+    width: 20px;
+    margin-top: 0;
+  }
+
+  /** done, thankesページなど **/
+  .message-card {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  /** 会員登録、ログイン **/
+  .auth-card {
+    width: 100%;
+  }
+
+  /** トップページ **/
+  .search-sm {
+    display: none !important;
+  }
+
+  .search-xs {
+    display: block !important;
+    border-radius: 5px !important;
+  }
+
+  .photo-list {
+    padding: 0;
+    margin-top: 30px;
+  }
+
+  .search-select {
+    width: 25%;
+  }
+
+  .search-text {
+    width: 100%;
+  }
+
+  .search-xs-btn {
+    border-radius: 3px!important;
+    height: 45px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /** done, thankesページなど **/
+  .message-card {
+    width: 100%;
+  }
 }

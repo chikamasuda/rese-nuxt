@@ -4,8 +4,8 @@
       <Logo />
       <LoginMenu />
     </div>
-    <v-row class="mb-5 justify-center">
-      <v-col cols="12" sm="12" md="6">
+    <v-row class="mb-5 justify-center pt-5">
+      <v-col cols="12" xs="12" sm="9" md="6">
         <v-card>
           <v-card-title>予約内容変更</v-card-title>
           <v-divider></v-divider>
@@ -65,7 +65,7 @@
           </v-card-text>
           <v-card class="ml-4 mr-4 mt-3">
             <v-card-title>予約内容確認</v-card-title>
-            <v-simple-table class="table">
+            <v-simple-table class="table reservation-table">
               <tbody>
                 <tr>
                   <th class="text-left bg-gray border-top">店名</th>
@@ -166,34 +166,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-th, td {
-  border-bottom: none!important;  
-}
-
-th {
-  width: 15%;
-}
-
-.card-text {
-  width: 100%;
-  font-size: 11px;
-  font-weight: normal;
-  padding-bottom: 3px;
-}
-
-.favorite-card {
-  height: 300px;
-}
-
-.photo-card {
-  height: 260px;
-}
-
-@media screen and (max-width: 768px) {
-  th {
-    width: 25%;
-  }
-}
-</style>

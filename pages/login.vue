@@ -4,7 +4,7 @@
     <Logo />
     <LoginMenu />
   </div>
-  <v-card class="mx-auto v-card pb-2 bg-blue">
+  <v-card class="mx-auto auth-card pb-2 bg-blue">
     <v-card-title class="blue accent-4 white--text">Login</v-card-title>
     <v-divider></v-divider>
     <v-card-text>
@@ -61,33 +61,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.v-card {
-  margin-top: 150px;
-  width: 40%;
-}
-a {
-  text-decoration: none;
-}
-.menu-link {
-  color: #333;
-}
-@media screen and (max-width: 768px) {
-  .v-card {
-    margin-top: 50px;
-    width: 70%;
-  }
-}
-@media screen and (max-width: 414px) {
-  .v-card {
-    margin-top: 50px;
-    width: 100%;
-  }
-}
-</style>
-<style>
-.v-text-field__details {
-  display: none!important;
-}
-</style>

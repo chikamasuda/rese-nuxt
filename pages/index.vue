@@ -1,19 +1,41 @@
 <template>
   <div>
-    <header class="d-flex align-center mt-4">
+    <header class="d-flex align-center mt-4 justify-space-between">
         <v-row class="align-center">
         <v-col cols="3" class="d-flex search-wrapper text-right">
-          <Logo />
+          <Logo class="logo" />
         </v-col>
-        <v-col cols="9" class="d-flex mt-1 search-wrapper text-right">
-          <v-select tile solo label="All area" class="search search-select" v-model="area" :items= "areas"></v-select>
-          <v-select tile solo label="All genre" class="search search-select" v-model="genre" :items= "genres"></v-select>
-          <v-text-field label="Search..." solo tile class="search search-text" prepend-inner-icon="mdi-magnify" v-model="keyword"></v-text-field>
-          <v-btn tile color="blue accent-4 white--text" class="search-btn pl-5 pr-5" @click="searchShopList(area, genre, keyword)">検索</v-btn>
+        <v-col cols="9" class="d-flex mt-1 search-pc justify-end">
+          <v-select tile solo label="All area" class="search-pc search-select" v-model="area" :items= "areas"></v-select>
+          <v-select tile solo label="All genre" class="search-pc search-select" v-model="genre" :items= "genres"></v-select>
+          <v-text-field label="Search..." solo tile class="search-pc search-text" prepend-inner-icon="mdi-magnify" v-model="keyword"></v-text-field>
+          <v-btn tile color="blue accent-4 white--text" class="search-pc search-btn pl-5 pr-5" @click="searchShopList(area, genre, keyword)">検索</v-btn>
           <LoginMenu class="ml-5 menu" />
         </v-col>
         </v-row>
     </header>
+    <v-row class="search-sm">
+      <v-col cols="12" class="d-flex justify-end">
+        <v-select tile solo label="All area" class="search-sm search-select" v-model="area" :items= "areas"></v-select>
+        <v-select tile solo label="All genre" class="search-sm search-select" v-model="genre" :items= "genres"></v-select>
+        <v-text-field label="Search..." solo tile class="search-sm search-text" prepend-inner-icon="mdi-magnify" v-model="keyword"></v-text-field>
+        <v-btn tile color="blue accent-4 white--text" class="search-sm search-btn pl-5 pr-5" @click="searchShopList(area, genre, keyword)">
+          <v-icon>mdi-magnify</v-icon>
+        </v-btn>
+      </v-col>
+    </v-row>
+    <v-card class="search-xs mt-3 pl-4 pr-4 pt-4 pb-4">
+      <v-row>
+        <v-col cols="12" class="d-flex justify-end">
+          <v-select tile solo label="All area" class="search-xs search-select" v-model="area" :items= "areas"></v-select>
+          <v-select tile solo label="All genre" class="search-xs search-select" v-model="genre" :items= "genres"></v-select>
+        </v-col>
+      </v-row>
+      <v-text-field label="Search..." solo tile class="search-xs search-text" prepend-inner-icon="mdi-magnify" v-model="keyword"></v-text-field>
+      <v-btn tile color="blue accent-4 white--text" class="search-xs search-xs-btn" @click="searchShopList(area, genre, keyword)">
+        検索
+      </v-btn>
+    </v-card>
     <v-overlay :value="overlay">
       <v-card v-if="!$auth.loggedIn" light>
         <div class="text-right pt-2 pr-3" @click="closeOverlay()">
@@ -28,16 +50,16 @@
         </div>
       </v-card>
     </v-overlay>
-    <ul class="photo-list mb-5">
+    <ul class="shop-list mb-5">
       <li>
         <v-row>
-          <v-col cols="12" sm="12" md="3" v-for="shop in shopList" :key="shop.id">
+          <v-col cols="12" xs="12" sm="6" md="3" v-for="shop in shopList" :key="shop.id">
             <v-card class="photo-card">
               <v-img
                 :src="`${shop.image_url}`"
                 height="150"
               ></v-img>
-              <v-card-title class="text-h6 mt-2">
+              <v-card-title class="text-h6 mt-2 shop-title">
                 {{ shop.name }}
               </v-card-title>
               <v-card-text class="mr-2 black--text shop-text">
@@ -139,34 +161,3 @@
     }
   }
 </script>
-
-<style scoped>
-.photo-list {
-  padding: 0;
-  margin-top: 30px;
-}
-
-.v-card__title {
-  padding: 0 16px;
-}
-
-.shop-text {
-  width: 100%;
-  font-size: 11px;
-  font-weight: normal;
-  padding-bottom: 3px;
-}
-
-.search {
-  border-radius: 0;
-}
-
-.search-select {
-  width: 15%;
-}
-
-.search-btn {
-  min-height: 49px;
-  width: 80px;
-}
-</style>

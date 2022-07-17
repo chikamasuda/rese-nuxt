@@ -17,16 +17,17 @@
           </div>
         </v-card>
       </v-overlay>
-      <v-col cols="5">
+      <v-col cols="12" xs="12" sm="12" md="5">
         <h3 class="mt-5 mb-3">予約状況</h3>
+        <p>{{ reservationMessage }}</p>
         <v-row>
           <v-col cols="12" v-for="(reservation,index) in reservations" :key="reservation.id">
-            <v-card class="mr-5 reservation-card">
+            <v-card class="reservation-card">
               <v-card-title class="pb-2 pt-2">
                 <v-icon color="black" class="mr-2">mdi-clock</v-icon>予約<span class="ml-1">{{ index + 1 }}</span>
               </v-card-title>
               <v-divider></v-divider>
-              <v-simple-table class="table">
+              <v-simple-table class="table reservation-table">
                 <tbody>
                   <tr>
                     <th class="text-left bg-gray border-top">店名</th>
@@ -55,19 +56,20 @@
         </v-row>
       </v-col>
       <v-spacer />
-      <v-col cols="6">
+      <v-col cols="12" xs="12" sm="12" md="6">
         <h3 class="mt-5 mb-3">お気に入り店舗</h3>
+        <p>{{ favoriteMessage }}</p>
         <v-row>
-          <v-col cols="6" v-for="favorite in favorites" :key="favorite.id">
-            <v-card class="photo-card">
+          <v-col cols="12" xs="12" sm="6" md="6" v-for="favorite in favorites" :key="favorite.id">
+            <v-card class="shop-card">
               <v-img
                 :src="`${favorite.shops.image_url}`"
                 height="150"
               ></v-img>
-              <v-card-title class="text-h6 mt-2">
+              <v-card-title class="text-h6 mt-2 shop-title">
                 {{ favorite.shops.name }}
               </v-card-title>
-              <v-card-text class="mr-2 black--text card-text">
+              <v-card-text class="mr-2 black--text shop-text">
                 <span>#{{ favorite.shops.area.name }}</span>
                 <span>#{{ favorite.shops.genre.name }}</span>
               </v-card-text>
@@ -94,6 +96,8 @@ export default {
       cancelOverlay: false,
       index: '',
       reservation_id: "",
+      favoriteMessage: '',
+      reservationMessage: '',
     };
   },
   methods: {
@@ -101,6 +105,9 @@ export default {
       await this.$axios.get(`/api/v1/users/${this.$auth.user.id}/reservations`)
       .then((response) => {
         this.reservations = response.data.reservations;
+        if(this.reservations.length == 0) {
+          this.reservationMessage = "予約はありません。"
+        }
         console.log(this.reservations);
       })
       .catch((error) => {
@@ -111,6 +118,9 @@ export default {
       await this.$axios.get(`/api/v1/users/${this.$auth.user.id}/favorites`)
       .then((response) => {
         this.favorites = response.data.favorites;
+        if(this.favorites.length == 0) {
+          this.favoriteMessage = "お気に入り店舗はありません。"
+        }
       })
       .catch((error) => {
         console.log(error.response);
@@ -166,32 +176,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-th, td {
-  border-bottom: none!important;  
-}
-
-.v-card__title {
-  padding: 0 16px;
-}
-
-.card-text {
-  width: 100%;
-  font-size: 11px;
-  font-weight: normal;
-  padding-bottom: 3px;
-}
-
-.favorite-card {
-  height: 300px;
-}
-
-.photo-card {
-  height: 260px;
-}
-
-th {
-  width: 20%;
-}
-</style>

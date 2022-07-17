@@ -6,7 +6,7 @@
     </div>
     <div>
       <v-row class="mt-5">
-        <v-col cols="6">
+        <v-col cols="12" sm="12" md="6">
           <div class="d-flex mb-5">
             <v-btn color="white" class="mr-5 pre-btn" to="/"><v-icon>mdi-chevron-left</v-icon></v-btn>
             <h2>{{ shop.name }}</h2>
@@ -19,7 +19,7 @@
           <p class="mt-5">{{ shop.description }}</p>
         </v-col>
         <v-spacer />
-        <v-col cols="5">
+        <v-col cols="12" sm="12" md="5">
           <v-card v-if="!$auth.loggedIn">
             <v-card-title>予約</v-card-title>
             <v-divider></v-divider>
@@ -92,7 +92,7 @@
             </v-card-text>
             <v-card class="ml-4 mr-4 mt-5">
               <v-card-title>予約内容</v-card-title>
-              <v-simple-table class="table">
+              <v-simple-table class="table reservation-table">
                 <tbody>
                   <tr>
                     <th class="text-left bg-gray border-top">店名</th>
@@ -202,32 +202,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.pre-btn {
-  height: 36px;
-  min-width: 40px!important;
-  padding: 0 8px!important;
-}
-
-.v-text-field {
-  padding-top: 0;
-  margin-top: 0;
-}
-
-.reserve-button {
-  width: 40%;
-}
-
-th, td {
-  border-bottom: none!important;  
-}
-
-th {
-  width: 20%;
-}
-</style>
-
-<style>
-
-</style>
