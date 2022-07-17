@@ -147,6 +147,7 @@ export default {
       }
       await this.$axios.put('/api/v1/reservations/' + this.reservation.id, data)
       .then((response) => {
+        this.reservation.splice(this.reservation.id, 1,  data)
         this.$router.push("/edit-done")
       })
       .catch((error) => {

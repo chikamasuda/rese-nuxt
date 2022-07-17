@@ -181,7 +181,7 @@ export default {
         await this.$axios.post('/api/v1/reservations', data)
         .then((response) => {
           this.reservations.push(response.data.reservations)
-          this.$router.push("/done")
+          this.$router.push("/reservation-done")
         })
         .catch((error) => {
           console.log(error.response);
