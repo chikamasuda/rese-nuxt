@@ -172,7 +172,7 @@ export default {
           this.star = true
           let sum = 0;
           for(let i = 0; i < this.reviews.length; i++) {
-            sum += this.reviews[i].rating
+            sum += Number(this.reviews[i].rating)
           }
           if(this.reviews.length == 0) {
               this.rating = 0
