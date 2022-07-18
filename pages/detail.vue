@@ -12,11 +12,29 @@
             <h2>{{ shop.name }}</h2>
           </div>
           <v-img :src="`${shop.image_url}`" class="mt-5"></v-img>
-          <div class="black--text mt-5">
+          <div class="black--text mt-5 mb-2">
             <span v-if="shop.area" class="mr-2">#{{ shop.area.name }}</span>
             <span v-if="shop.genre">#{{ shop.genre.name }}</span>
           </div>
-          <p class="mt-5">{{ shop.description }}</p>
+          <div class="d-flex align-center">
+            <v-rating
+              v-model="rating"
+              :length="length"
+              color="orange"
+              background-color="grey lighten-1"
+              empty-icon="$ratingFull"
+              half-increments
+              middle
+              class="star-display p-0"
+              v-show="star"
+            ></v-rating>
+            <span class="font-weight-bold ml-2 mt-1 mr-1" v-show="star">{{ rating }}</span>
+            <span class="mt-1" v-show="star">({{ reviews.length }}件)</span>
+            <v-btn v-if="star && this.reservationCount > this.reviewCount" small color="orange darken-1" class="ml-3 white--text" :to="`/review?shop_id=${shop.id}&shop_name=${shop.name}`">
+              評価する
+            </v-btn>
+          </div>
+          <p class="mt-3">{{ shop.description }}</p>
         </v-col>
         <v-spacer />
         <v-col cols="12" sm="12" md="5">
@@ -137,28 +155,48 @@ export default {
         reservations: [],
         dateError: '',
         numberError: '',
+        length: 5,
+        rating: 0,
+        reviews: [],
+        star: false,
+        reviewCount: 0,
+        reservationCount:0,
       };
     },
     methods: {
-      async getReservations() {
-        await this.$axios.get(`/api/v1/users/${this.$auth.user.id}/reservations`)
+      async getShop() {
+        await this.$axios.get(`/api/v1/shops/${this.$route.query.id}`)
         .then((response) => {
-          this.reservations = response.data.reservations;
-          console.log(this.reservations);
+          this.shop = response.data.shop[0]
+          this.reviews = this.shop.reviews
+          this.star = true
+          let sum = 0;
+          for(let i = 0; i < this.reviews.length; i++) {
+            sum += this.reviews[i].rating
+          }
+          if(this.reviews.length == 0) {
+              this.rating = 0
+          } else {
+            this.rating = Number(sum / this.reviews.length.toFixed(1))
+          }
         })
         .catch((error) => {
           console.log(error.response);
         })
       },
-      async getShop() {
-        await this.$axios.get(`/api/v1/shops/${this.$route.query.id}`)
-        .then((response) => {
-          this.shop = response.data.shop[0];
-          console.log(this.shop)
-        })
-        .catch((error) => {
-          console.log(error.response);
-        })
+      async isArrived() {
+        if(this.$auth.loggedIn) {
+          await this.$axios.get(`/api/v1/is-arrived?shop_id=${this.$route.query.id}&user_id=${this.$auth.user.id}`)
+          .then((response) => {
+              this.reviewCount = response.data.review_count
+              this.reservationCount = response.data.reservation_count
+              console.log(this.reviewCount)
+              console.log(this.reservationCount)
+          })
+          .catch((error) => {
+            console.log(error.response);
+          })
+        }
       },
       formatDate (date) {
         if (!date) return null
@@ -197,8 +235,8 @@ export default {
       },
     },
     created() {
-      this.getShop();
-      this.getReservations();
+      this.getShop()
+      this.isArrived()
     }
 }
 </script>

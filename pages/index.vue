@@ -19,9 +19,7 @@
         <v-select tile solo label="All area" class="search-sm search-select" v-model="area" :items= "areas"></v-select>
         <v-select tile solo label="All genre" class="search-sm search-select" v-model="genre" :items= "genres"></v-select>
         <v-text-field label="Search..." solo tile class="search-sm search-text" prepend-inner-icon="mdi-magnify" v-model="keyword"></v-text-field>
-        <v-btn tile color="blue accent-4 white--text" class="search-sm search-btn pl-5 pr-5" @click="searchShopList(area, genre, keyword)">
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
+        <v-btn tile color="blue accent-4 white--text" class="search-sm search-btn pl-5 pr-5" @click="searchShopList(area, genre, keyword)">検索</v-btn>
       </v-col>
     </v-row>
     <v-card class="search-xs mt-3 pl-4 pr-4 pt-4 pb-4">

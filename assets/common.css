@@ -34,6 +34,19 @@ a {
   display: none!important;
 }
 
+.v-rating .v-icon {
+  padding: 0!important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  outline: none;
+  margin-right: 3px;
+}
+
+.star-display {
+  pointer-events: none;
+}
+
 /** ログイン、会員登録 **/
 .auth-card {
   margin-top: 150px;
