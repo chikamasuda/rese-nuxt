@@ -177,7 +177,7 @@ export default {
           if(this.reviews.length == 0) {
               this.rating = 0
           } else {
-            this.rating = Number(sum / this.reviews.length.toFixed(1))
+            this.rating = Number(sum / this.reviews.length).toFixed(1)
           }
         })
         .catch((error) => {
