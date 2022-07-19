@@ -5,10 +5,7 @@
     <LoginMenu />
   </div>
   <v-card class="mx-auto message-card bg-blue text-center">
-    <p class="thanks-text">会員登録ありがとうございます。</p>
-    <div class="text-center" @click="toLogin()">
-      <v-btn small class="blue accent-4 white--text mt-5" type="submit" to="/login">ログインする</v-btn>
-    </div>
+    <p class="thanks-text">会員登録ありがとうございます。確認メールからメール認証をお願いします。</p>
   </v-card>
 </div>
 </template>

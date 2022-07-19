@@ -51,7 +51,7 @@ export default {
         })
         .catch((error) => {
           if(error.response.status == "401") {
-            this.error = "Eメールかパスワードの入力に誤りがあります。"
+            this.error = "メール認証が行われていないか、Eメールかパスワードの入力に誤りがあります。"
           }
           this.emailError = error.response.data.data.errors['email'];
           this.passwordError = error.response.data.data.errors['password'];
