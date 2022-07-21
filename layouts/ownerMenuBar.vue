@@ -87,7 +87,7 @@ export default {
     async getOwnerInformation() {
       const token = this.$cookies.get('owner.token')
       const headers = { Authorization: `Bearer ${token}` }
-      await this.$axios.get('/api/v1/owners/', { headers: headers })
+      await this.$axios.get('/api/v1/owners', { headers: headers })
       .then((response) => {
         console.log(response)
         this.user = response.data.owner.name 

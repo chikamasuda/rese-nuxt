@@ -37,7 +37,7 @@ export default {
         .then((response) => {
           console.log(response.data.token);
           const token = response.data.token
-          this.$axios.get('/api/v1/admins/', {
+          this.$axios.get('/api/v1/admins', {
             headers: { 
               Authorization: `Bearer ${token}`
             }
