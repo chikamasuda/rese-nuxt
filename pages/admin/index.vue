@@ -65,7 +65,7 @@ export default {
     async getAdminInformation() {
       const token = this.$cookies.get('admin.token')
       const headers = { Authorization: `Bearer ${token}` }
-      await this.$axios.get('/api/v1/admins/', { headers: headers })
+      await this.$axios.get('/api/v1/admins', { headers: headers })
       .then((response) => {
         console.log(response)
         this.user = response.data.admin.name 

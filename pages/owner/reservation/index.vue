@@ -37,7 +37,7 @@ export default {
   layout: 'ownerMenuBar',
   data () {
     return {
-      ownerId: [],
+      ownerId: '',
       reservations: []
     }
   },

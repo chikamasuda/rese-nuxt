@@ -11,7 +11,7 @@
       app
     >
       <v-list>
-        <v-list-item-title class="text-h6 text-center pt-3 pb-3">
+        <v-list-item-title class="text-h6 text-center pt-3 pb-3 white--text">
             Rese店舗代表者画面
         </v-list-item-title>
         <v-divider></v-divider>
