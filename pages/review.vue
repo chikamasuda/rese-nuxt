@@ -75,7 +75,7 @@ export default {
       await this.$axios.post('/api/v1/reviews', data)
       .then((response) => {
         this.reviews.push(response.data.reviews)
-        this.$router.push("/review-done?shop_id=" + this.shop.id)
+        this.$router.push("/reviewDone?shop_id=" + this.shop.id)
       })
       .catch((error) => {
         console.log(error.response);

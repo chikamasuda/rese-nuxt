@@ -133,6 +133,12 @@ a {
   height: 260px;
 }
 
+.admin-card {
+  width: 40%;
+  margin: auto;
+  margin-top: 50px;
+}
+
 @media screen and (max-width: 768px) {
   /** 共通 **/
   .menu {
@@ -183,6 +189,12 @@ a {
   .message-card {
     width: 50%;
   }
+
+  .admin-card {
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+  }
 }
 
 @media screen and (max-width: 414px) {
@@ -226,5 +238,10 @@ a {
   /** done, thankesページなど **/
   .message-card {
     width: 100%;
+  }
+
+  .admin-card {
+    width: 90%;
+    margin-top: 30px;
   }
 }
