@@ -47,7 +47,7 @@ export default {
         this.$auth.loginWith('local', { data:this.form })
         .then((response) => {
           console.log(response);
-          this.$router.push('/');
+          window.location.href = '/'
         })
         .catch((error) => {
           if(error.response.status == "401") {

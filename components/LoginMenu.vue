@@ -57,7 +57,7 @@ export default {
     async logout() {
       try {
         await this.$auth.logout();
-        this.$router.push("/login");
+        window.location.href = '/login'
       } catch (error) {
         console.log(error);
       }
