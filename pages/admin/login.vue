@@ -9,7 +9,7 @@
         <v-text-field type="password" v-model="password" dense required prepend-icon="mdi-lock" class="mt-3"/>
         <p class="red--text ml-5 pl-3">{{ error }}</p>
         <div class="text-center mt-5 align-center">
-          <v-btn class="blue darken-4 white--text" type="submit">ログイン</v-btn>
+          <v-btn class="blue darken-2 white--text" type="submit">ログイン</v-btn>
         </div>
       </v-form>
     </v-card-text>

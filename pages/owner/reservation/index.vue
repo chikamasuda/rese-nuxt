@@ -14,17 +14,15 @@
             人数
           </th>
           <th class="text-left">
-            店舗名
+            予約者名
           </th>
-          <th></th>
         </tr>
       </thead>
         <tbody>
           <tr class="pb-5 link-items" v-for="reservation in reservations" :key="reservation.id">
-            <td>{{ reservation.date }}</td>
-            <td></td>
-            <td></td>
-            <td><v-btn small color="primary">メール送信</v-btn></td>
+            <td>{{ $dateFns.format(new Date(reservation.date.substr(0,15)), 'Y年M月d日  H:mm') }}</td>
+            <td>{{ reservation.number }}</td>
+            <td>{{ reservation.users.name }}</td>
           </tr>
         </tbody>
     </v-simple-table>
@@ -43,23 +41,20 @@ export default {
   },
   methods: {
     async getReservationList() {
-      const id = this.ownerId
-      await this.$axios.get('/api/v1/owners/' + id + '/reservation')
-      .then((response) => {
-        console.log(response)
-        this.reservations = response.data.reservations;
-      })
-      .catch((error) => {
-        console.log(error.response)
-      })
-    },
-    async getOwnerInformation() {
       const token = this.$cookies.get('owner.token')
       const headers = { Authorization: `Bearer ${token}` }
-      await this.$axios.get('/api/v1/owners/', { headers: headers })
+      await this.$axios.get('/api/v1/owners', { headers: headers })
       .then((response) => {
         this.ownerId = response.data.owner.id
         console.log(this.ownerId)
+          this.$axios.get(`/api/v1/owners/${ this.ownerId }/reservations`, { headers: headers })
+          .then((response) => {
+            console.log(response)
+            this.reservations = response.data.reservations;
+          })
+          .catch((error) => {
+            console.log(error.response)
+          })
       })
       .catch((error) => {
         console.log(error)
@@ -67,7 +62,6 @@ export default {
     },
   },
   created() {
-    this.getOwnerInformation()
     this.getReservationList()
   }
 }
