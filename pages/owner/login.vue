@@ -35,10 +35,20 @@ export default {
           password: this.password,
         })
         .then((response) => {
-          console.log(response.data.token);
           const token = response.data.token
-          this.$cookies.set('owner.token', token)
-          this.$router.push('/owner/shop')
+          this.$axios.get('/api/v1/owners', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          })
+          .then((response) => {
+            console.log(response)
+            this.$cookies.set('owner.token', token)
+            this.$router.push('/owner/reservation')
+          })
+          .catch((error) => {
+            console.log(error)
+          })
         })
         .catch((error) => {
           this.error = "認証情報をご確認ください。"
