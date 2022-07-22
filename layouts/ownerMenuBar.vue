@@ -1,20 +1,8 @@
 <template>
   <v-app>
     <!-- サイドバー部分  -->
-    <v-navigation-drawer
-      class="sidebar white--text"
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      color="blue darken-4"
-      fixed
-      app
-    >
+    <v-navigation-drawer class="sidebar white--text" v-model="drawer" fixed app>
       <v-list>
-        <v-list-item-title class="text-h6 text-center pt-3 pb-3 white--text">
-            Rese店舗代表者画面
-        </v-list-item-title>
-        <v-divider></v-divider>
         <v-list-item class="white--text" v-for="(item, i) in items" :key="i" :to="item.to" router>
           <v-list-item-action>
             <v-icon class="white--text">{{ item.icon }}</v-icon>
@@ -34,12 +22,7 @@
       </v-list>
     </v-navigation-drawer>
     <!-- ヘッダー部分 -->
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-      class="white"
-    >
+    <v-app-bar :clipped-left="clipped" fixed app class="white">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
         <h1 class="menu-title">Rese</h1>
       <v-spacer />
@@ -67,14 +50,14 @@ export default {
       user: '',
       items: [
         {
-          icon: 'mdi-store',
-          title: '店舗管理',
-          to: '/owner/shop'
-        },
-        {
           icon: 'mdi-pencil-plus',
           title: '予約管理',
           to: '/owner/reservation'
+        },
+        {
+          icon: 'mdi-store',
+          title: '店舗管理',
+          to: '/owner/shop'
         },
       ],
       miniVariant: false,
@@ -118,11 +101,11 @@ export default {
 
 <style scoped>
   .menu-title {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: normal;
   }
-  .v-navigation-drawer .v-list:not(.v-select-list) {
-    background: inherit;
+  .sidebar {
+    background-color: #011849!important;
   }
   .v-list {
       color: inherit;

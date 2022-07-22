@@ -10,58 +10,20 @@
           <v-card-title>予約内容変更</v-card-title>
           <v-divider></v-divider>
           <v-card-text>
-            <v-menu
-              v-model="menu"
-              :close-on-content-click="false"
-              :nudge-right="40"
-              transition="scale-transition"
-              offset-y
-              min-width="auto"
-            >
+            <v-menu v-model="menu" :close-on-content-click="false" :nudge-right="40" transition="scale-transition" offset-y min-width="auto">
               <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  v-model="computedDateFormatted"
-                  prepend-icon="mdi-calendar"
-                  readonly
-                  placeholder="予約日"
-                  v-bind="attrs"
-                  v-on="on"
-                ></v-text-field>
+                <v-text-field v-model="computedDateFormatted" prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on">
+                </v-text-field>
               </template>
-              <v-date-picker
-                v-model="date"
-                no-title
-                @input="menu = false"
-                locale="ja-jp"
-              ></v-date-picker>
+              <v-date-picker v-model="date" no-title @input="menu = false" locale="ja-jp"></v-date-picker>
             </v-menu>
-            <ul class="red--text ml-2" v-for="error in dateError" :key="error.id">
-              <li>{{ error }}</li>
-            </ul>
-            <v-select
-              v-model="time"
-              :items="times"
-              menu-props="auto"
-              placeholder="予約時間"
-              hide-details
-              prepend-icon="mdi-clock"
-              single-line
-              class="mb-5 pb-1 mt-3"
-            ></v-select>
-            <ul class="red--text ml-2" v-for="error in dateError" :key="error.id">
-              <li>{{ error }}</li>
-            </ul>
-            <v-select
-              v-model="number"
-              :items= "numbers"
-              menu-props="auto"
-              hide-details
-              prepend-icon="mdi-account"
-              class="mt-5"
-            ></v-select>
-            <ul class="red--text ml-2" v-for="error in numberError" :key="error.id">
-              <li>{{ error }}</li>
-            </ul>
+            <ul class="red--text ml-2" v-for="error in dateError" :key="error.id"><li>{{ error }}</li></ul>
+            <v-select v-model="time" :items="times" menu-props="auto" hide-details prepend-icon="mdi-clock" single-line class="mb-5 pb-1 mt-3">
+            </v-select>
+            <ul class="red--text ml-2" v-for="error in dateError" :key="error.id"><li>{{ error }}</li></ul>
+            <v-select v-model="number" :items= "numbers" menu-props="auto" hide-detail prepend-icon="mdi-account" class="mt-5">
+            </v-select>
+            <ul class="red--text ml-2" v-for="error in numberError" :key="error.id"><li>{{ error }}</li></ul>
           </v-card-text>
           <v-card class="ml-4 mr-4 mt-3">
             <v-card-title>予約内容確認</v-card-title>
