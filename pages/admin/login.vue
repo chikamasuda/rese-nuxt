@@ -35,11 +35,9 @@ export default {
           password: this.password,
         })
         .then((response) => {
-          console.log(response.data.token);
           const token = response.data.token
           this.$axios.get('/api/v1/admins', {
             headers: {
-              Accept: application/json,
               Authorization: `Bearer ${token}`
             }
           })
