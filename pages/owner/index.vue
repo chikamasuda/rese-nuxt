@@ -41,8 +41,8 @@ export default {
   },
   methods: {
     async getReservationList() {
-      const token = this.$cookies.get('owner.token')
-      const headers = { Authorization: `Bearer ${token}` }
+      const owner_token = this.$cookies.get('owner.token')
+      const headers = { Authorization: `Bearer ${owner_token}` }
       await this.$axios.get('/api/v1/owners', { headers: headers })
       .then((response) => {
         this.ownerId = response.data.owner.id

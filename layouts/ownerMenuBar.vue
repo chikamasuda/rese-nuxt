@@ -63,8 +63,8 @@ export default {
   },
   methods: {
     async getOwnerInformation() {
-      const token = this.$cookies.get('owner.token')
-      const headers = { Authorization: `Bearer ${token}` }
+      const owner_token = this.$cookies.get('owner.token')
+      const headers = { Authorization: `Bearer ${owner_token}` }
       await this.$axios.get('/api/v1/owners', { headers: headers })
       .then((response) => {
         console.log(response)
@@ -76,12 +76,9 @@ export default {
       })
     },
     async logout() {
-      const token = this.$cookies.get('owner.token')
-      const headers = { Authorization: `Bearer ${token}` }
-      this.$axios.delete('/api/v1/owners/logout', { headers: headers })
+      this.$axios.delete('/api/v1/owners/logout')
       .then((response) => {
         console.log(response)
-        this.$router.replace('/owner/login')
       })
       .catch((error) => {
         console.log(error)
