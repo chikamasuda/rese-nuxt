@@ -44,7 +44,7 @@ export default {
           .then((response) => {
             console.log(response)
             this.$cookies.set('owner.token', token)
-            this.$router.push('/owner/reservation')
+            this.$router.push('/owner')
           })
           .catch((error) => {
             console.log(error)

@@ -55,7 +55,6 @@ export default {
       this.$axios.delete('/api/v1/admins/logout', { headers: headers })
       .then((response) => {
         console.log(response)
-        document.cookie = "admin.token=; max-age=0";
         this.$router.replace('/admin/login')
       })
       .catch((error) => {
@@ -71,9 +70,6 @@ export default {
         this.user = response.data.admin.name 
       })
       .catch((error) => {
-        if(error.response.status == "401") {
-          this.$router.replace('/admin/login')
-        }
         console.log(error)
       })
     },

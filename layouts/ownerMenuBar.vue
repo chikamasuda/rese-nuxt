@@ -85,7 +85,6 @@ export default {
       this.$axios.delete('/api/v1/owners/logout', { headers: headers })
       .then((response) => {
         console.log(response)
-        document.cookie = "admin.token=; max-age=0";
         this.$router.replace('/owner/login')
       })
       .catch((error) => {
