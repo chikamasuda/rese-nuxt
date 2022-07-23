@@ -133,10 +133,16 @@ a {
   height: 260px;
 }
 
-.admin-card {
+.admin-card-area {
   width: 40%;
   margin: auto;
   margin-top: 50px;
+}
+
+.admin-title {
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 5px;
 }
 
 @media screen and (max-width: 768px) {
@@ -190,7 +196,7 @@ a {
     width: 50%;
   }
 
-  .admin-card {
+  .admin-card-area {
     width: 70%;
     margin: auto;
     margin-top: 50px;
@@ -240,7 +246,7 @@ a {
     width: 100%;
   }
 
-  .admin-card {
+  .admin-card-area {
     width: 90%;
     margin-top: 30px;
   }

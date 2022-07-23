@@ -13,9 +13,9 @@
         </v-list>
       </v-menu>
     </v-toolbar>
-    <div>
+    <div class="admin-card-area">
+      <h2 class="admin-title">店舗代表者作成</h2>
       <v-card class="admin-card pb-2">
-        <v-card-title>店舗代表者作成</v-card-title>
         <v-divider></v-divider>
         <v-card-text>
           <v-form @submit.prevent="createOwner()" method="POST">
