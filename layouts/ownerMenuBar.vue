@@ -3,12 +3,20 @@
     <!-- サイドバー部分  -->
     <v-navigation-drawer class="sidebar white--text" v-model="drawer" fixed app>
       <v-list>
-        <v-list-item class="white--text" v-for="(item, i) in items" :key="i" :to="item.to" router>
+        <v-list-item class="white--text" router exact to="/owner">
           <v-list-item-action>
-            <v-icon class="white--text">{{ item.icon }}</v-icon>
+            <v-icon class="white--text">mdi-calendar</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title"></v-list-item-title>
+            <v-list-item-title>予約管理</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item class="white--text" router to="/owner/shop">
+          <v-list-item-action>
+            <v-icon class="white--text">mdi-store</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>店舗管理</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item  @click="logout()" router exact class="white--text">
@@ -48,18 +56,6 @@ export default {
       drawer: true,
       fixed: false,
       user: '',
-      items: [
-        {
-          icon: 'mdi-pencil-plus',
-          title: '予約管理',
-          to: '/owner/reservation'
-        },
-        {
-          icon: 'mdi-store',
-          title: '店舗管理',
-          to: '/owner/shop'
-        },
-      ],
       miniVariant: false,
       uid: null,
       name: "",
