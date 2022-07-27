@@ -4,7 +4,8 @@
       <v-card-title class="d-flex">
         予約一覧
       </v-card-title>
-      <v-simple-table>
+      <v-card-text v-if="reservations.length == 0">予約はありません</v-card-text>
+      <v-simple-table v-if="reservations.length > 0">
       <thead class="">
         <tr>
           <th class="text-left">
@@ -33,32 +34,39 @@
 <script>
 export default {
   layout: 'ownerMenuBar',
+  middleware: 'ownerAuth',
   data () {
     return {
+      reservations: [],
       ownerId: '',
-      reservations: []
+    }
+  },
+  computed: {
+    user() {
+      return this.$store.state.ownerAuth.currentUser
     }
   },
   methods: {
     async getReservationList() {
-      const owner_token = this.$cookies.get('owner.token')
-      const headers = { Authorization: `Bearer ${owner_token}` }
-      await this.$axios.get('/api/v1/owners', { headers: headers })
+      await this.$axios.get('/api/v1/owners/')
       .then((response) => {
         this.ownerId = response.data.owner.id
-        console.log(this.ownerId)
-          this.$axios.get(`/api/v1/owners/${ this.ownerId }/reservations`, { headers: headers })
-          .then((response) => {
-            console.log(response)
-            this.reservations = response.data.reservations;
-          })
-          .catch((error) => {
-            console.log(error.response)
-          })
+        this.$axios.get(`/api/v1/owners/${this.ownerId}/reservations`)
+        .then((response) => {
+          this.reservations = response.data.reservations
+          console.log(this.reservations)
+        })
+        .catch((error) => {
+          console.log(error.response)
+        })
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error.response)
       })
+    },
+    async logout() {
+      await this.$store.dispatch('ownerAuth/logout')
+      window.location.href = '/owner/login'
     },
   },
   created() {

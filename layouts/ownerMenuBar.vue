@@ -35,54 +35,41 @@
         <h1 class="menu-title">Rese</h1>
       <v-spacer />
         <div v-if="user">
-          <div class="mr-5 user">{{ user }}</div>
+          <div class="mr-5 user">{{ user.name }}</div>
         </div>
     </v-app-bar>
     <!-- コンテンツ部分 -->
-    <v-content>
+    <v-main>
       <v-container fluid>
         <nuxt />
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
 <script>
 export default {
-  namespaced: true, 
   data () {
     return {
       clipped: false,
       drawer: true,
       fixed: false,
-      user: '',
       miniVariant: false,
-      uid: null,
       name: "",
+    }
+  },
+  computed: {
+    user() {
+      return this.$store.state.ownerAuth.owner_user
     }
   },
   methods: {
     async getOwnerInformation() {
-      const owner_token = this.$cookies.get('owner.token')
-      const headers = { Authorization: `Bearer ${owner_token}` }
-      await this.$axios.get('/api/v1/owners', { headers: headers })
-      .then((response) => {
-        console.log(response)
-        this.user = response.data.owner.name 
-      })
-      .catch((error) => {
-        this.$router.push('/owner/login')
-        console.log(error)
-      })
+      await this.$store.dispatch('ownerAuth/currentUser')
     },
     async logout() {
-      this.$axios.delete('/api/v1/owners/logout')
-      .then((response) => {
-        console.log(response)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+      await this.$store.dispatch('ownerAuth/logout')
+      window.location.href = '/owner/login'
     },
   },
   created() {

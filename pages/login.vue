@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     async login() {
-        this.$auth.loginWith('user', { data:this.form })
+        this.$auth.loginWith('local', { data:this.form })
         .then((response) => {
           console.log(response);
           window.location.href = '/'

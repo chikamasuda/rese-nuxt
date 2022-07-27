@@ -5,8 +5,8 @@
     <v-divider></v-divider>
     <v-card-text>
       <v-form @submit.prevent="login" method="POST">
-        <v-text-field type="email" v-model="form.email" dense required prepend-icon="mdi-email"/>
-        <v-text-field type="password" v-model="form.password" dense required prepend-icon="mdi-lock" class="mt-3"/>
+        <v-text-field type="email" v-model="email" dense required prepend-icon="mdi-email"/>
+        <v-text-field type="password" v-model="password" dense required prepend-icon="mdi-lock" class="mt-3"/>
         <p class="red--text ml-5 pl-3">{{ error }}</p>
         <div class="text-center mt-5 align-center">
           <v-btn class="blue darken-2 white--text" type="submit">ログイン</v-btn>
@@ -19,12 +19,11 @@
 
 <script>
 export default {
+  middleware: 'loginedOwnerUser',
   data() {
     return {
-      form: {
-        email: '',
-        password: '',
-      },
+      email: '',
+      password: '',
       emailError: [],
       passwordError: [],
       error: '',
@@ -32,13 +31,11 @@ export default {
   },
   methods: {
     async login() {
-      await this.$auth.loginWith('owner_user', { data:this.form })
-      .then((response) => {
-        this.$router.push('/owner')
+      await this.$store.dispatch('ownerAuth/login', {
+        email: this.email,
+        password: this.password
       })
-      .catch((error) => {
-        this.error = "認証情報をご確認ください。"
-      })
+      this.$router.push('/owner')
     },
   },
 }

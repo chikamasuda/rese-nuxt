@@ -2,10 +2,10 @@
   <div>
     <v-card>
       <v-card-title class="">
-        <div class="mr-3">店舗一覧</div>
-        <v-card-text>まだ店舗の登録はされていません。</v-card-text>
-        <v-btn color="primary" class="ml-5"><v-icon>mdi-plus</v-icon>店舗登録</v-btn>
+        店舗一覧
       </v-card-title>
+      <v-card-text>まだ店舗の登録はされていません。</v-card-text>
+      <v-btn color="primary" class="mb-3 ml-5"><v-icon>mdi-plus</v-icon>店舗登録</v-btn>
     </v-card>
   </div>
 </template>
@@ -19,19 +19,8 @@ export default {
     }
   },
   methods: {
-    async getShopList() {
-      await this.$axios.get('/api/v1/shops')
-      .then((response) => {
-        console.log(response)
-        this.shopList = response.data.shops
-      })
-      .catch((error) => {
-        console.log(error.response)
-      })
-    },
   },
   created() {
-    this.getShopList()
   }
 }
 </script>

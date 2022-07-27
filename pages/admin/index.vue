@@ -3,7 +3,7 @@
     <v-toolbar color="white" class="pr-3">
       <v-toolbar-title class="title ml-4">Rese管理画面</v-toolbar-title>
       <v-spacer></v-spacer>
-      <div>{{ user }}</div>
+      <div v-if="user">{{ user.name }}</div>
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on"><v-icon class="">mdi-chevron-down</v-icon></v-btn>
@@ -39,49 +39,35 @@
 <script>
 export default {
   layout: 'admin',
+  middleware: 'adminAuth',
   data() {
     return {
-      user:'',
       name: '',
       email: '',
       password: '',
       alert: false,
     };
   },
+  computed: {
+    user() {
+      return this.$store.state.adminAuth.admin_user;
+    }
+  },
   methods: {
     async logout() {
-      const token = this.$cookies.get('admin.token')
-      const headers = { Authorization: `Bearer ${token}` }
-      this.$axios.delete('/api/v1/admins/logout', { headers: headers })
-      .then((response) => {
-        console.log(response)
-        this.$router.replace('/admin/login')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+      await this.$store.dispatch('adminAuth/logout')
+      window.location.href = '/admin/login'
     },
     async getAdminInformation() {
-      const token = this.$cookies.get('admin.token')
-      const headers = { Authorization: `Bearer ${token}` }
-      await this.$axios.get('/api/v1/admins', { headers: headers })
-      .then((response) => {
-        console.log(response)
-        this.user = response.data.admin.name 
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+      await this.$store.dispatch('adminAuth/currentUser')
     },
     async createOwner() { 
-      const token = this.$cookies.get('admin.token')
-      const headers = { Authorization: `Bearer ${token}` }
       const data = {
         name: this.name,
         email: this.email,
         password: this.password,
       }
-      await this.$axios.post('/api/v1/owners', data, { headers: headers })
+      await this.$axios.post('/api/v1/owners', data)
       .then((response) => {
         this.name = '',
         this.email = '',

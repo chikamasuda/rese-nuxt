@@ -34,6 +34,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/axios',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -52,6 +53,7 @@ export default {
     '@nuxtjs/auth-next',
     '@nuxtjs/date-fns',
     'cookie-universal-nuxt',
+    '@nuxtjs/dotenv',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -63,9 +65,7 @@ export default {
   auth: {
     localStorage: false,
     strategies: {
-      local: false,
-      user: {
-        scheme: 'local',
+      local: {
         user: {
           property: "user",
         },
@@ -76,34 +76,6 @@ export default {
           login: { url: '/api/v1/users/login', method: 'post'},
           logout: { url: 'api/v1/users/logout', method: 'post', propertyName: 'message' },
           user: { url: '/api/v1/users', method: 'get', propertyName: 'user'}
-        },
-      },
-      owner_user: {
-        scheme: 'local',
-        user: {
-          property: "owner",
-        },
-        token: {
-          property: "owner_token",
-        },
-        endpoints: {
-          login: { url: '/api/v1/owners/login', method: 'post'},
-          logout: { url: 'api/v1/owners/logout', method: 'post', propertyName: 'message' },
-          user: { url: '/api/v1/owners', method: 'get', propertyName: 'owner'}
-        },
-      },
-      admin_user: {
-        scheme: 'local',
-        admin_user: {
-          property: "admin",
-        },
-        token: {
-          property: "admin_token",
-        },
-        endpoints: {
-          login: { url: '/api/v1/admins/login', method: 'post'},
-          logout: { url: 'api/v1/admins/logout', method: 'post', propertyName: 'message' },
-          user: { url: '/api/v1/admins', method: 'get', propertyName: 'owner' }
         },
       },
     },
