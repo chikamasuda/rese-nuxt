@@ -18,7 +18,7 @@ export const actions = {
   },
 
   async currentUser ({ commit }) {
-    await this.$axios.get('/api/v1/owners/')
+    await this.$axios.get('/api/v1/owners')
     .then((response) => {
       commit('setOwnerUser', response.data.owner)
     })
