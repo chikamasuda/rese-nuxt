@@ -50,12 +50,12 @@ export default {
           window.location.href = '/'
         })
         .catch((error) => {
+          console.log(error)
           if(error.response.status == "401") {
-            this.error = "メール認証が行われていないか、Eメールかパスワードの入力に誤りがあります。"
+            this.error = error.response.data.message
           }
           this.emailError = error.response.data.data.errors['email'];
           this.passwordError = error.response.data.data.errors['password'];
-          console.log(error.response.status)
         })
     },
   },
