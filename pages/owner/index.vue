@@ -4,7 +4,7 @@
       <v-card-title class="d-flex">
         予約一覧
       </v-card-title>
-      <v-card-text v-if="reservations.length == 0">予約はありません</v-card-text>
+      <v-card-text>{{ reservationMessage }}</v-card-text>
       <v-simple-table v-if="reservations.length > 0">
       <thead class="">
         <tr>
@@ -39,6 +39,7 @@ export default {
     return {
       reservations: [],
       ownerId: '',
+      reservationMessage: '',
     }
   },
   computed: {
@@ -55,6 +56,9 @@ export default {
         .then((response) => {
           this.reservations = response.data.reservations
           console.log(this.reservations)
+          if(this.reservations.length == 0) {
+            this.reservationMessage = '予約はありません。'
+          }
         })
         .catch((error) => {
           console.log(error.response)
