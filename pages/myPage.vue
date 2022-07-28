@@ -48,6 +48,7 @@
                 </tbody>
               </v-simple-table>
               <div class="text-center pb-3 pt-3">
+                <v-btn small color="blue accent-4 white--text" class="mr-2" :to="'/qrcode?id=' + reservation.id">QRコード</v-btn>
                 <v-btn small color="blue accent-4 white--text" class="mr-2" :to="'/edit?id=' + reservation.id">予約変更</v-btn>
                 <v-btn small color="blue accent-4 white--text" @click="openCancelOverlay(index, reservation.id)">予約を取り消す</v-btn>
               </div>
