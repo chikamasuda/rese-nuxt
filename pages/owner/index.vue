@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     async getReservationList() {
-      await this.$axios.get('/api/v1/owners/')
+      await this.$axios.get('/api/v1/owners')
       .then((response) => {
         this.ownerId = response.data.owner.id
         this.$axios.get(`/api/v1/owners/${this.ownerId}/reservations`)

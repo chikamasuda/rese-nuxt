@@ -18,6 +18,11 @@ export default {
       shopList: [],
     }
   },
+  computed: {
+    user() {
+      return this.$store.state.ownerAuth.currentUser
+    }
+  },
   methods: {
   },
   created() {

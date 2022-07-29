@@ -6,13 +6,13 @@ import VueQriously from
       <Logo />
       <LoginMenu />
     </div>
-    <v-row class="mb-5 justify-center pt-5">
-      <v-col cols="12" xs="12" sm="6" md="5">
-        <v-card>
-          <v-card-title>QRコード</v-card-title>
+    <v-row class="mb-5 justify-center pt-3 text-center">
+      <v-col cols="12" xs="12" sm="6" md="4">
+        <v-card class="text-center">
+          <v-card-title class="text-center">QRコード</v-card-title>
           <v-divider></v-divider>
           <v-card-text>
-            <vue-qrcode value="https://www.1stg.me" />
+            <qrcode-vue value="http://localhost:3000/" tag="svg" :options="option" />
           </v-card-text>
         </v-card>
       </v-col>
@@ -21,11 +21,29 @@ import VueQriously from
 </template>
 
 <script>
+import QrcodeVue from 'qrcode.vue'
 export default {
-
+  data() {
+    return {
+      value: 'https://example.com',
+      size: 1000,
+      option: {
+        errorCorrectionLevel: "M",
+        maskPattern: 0,
+        margin: 10,
+        scale: 2,
+      }
+    }
+  },
+  components: {
+    QrcodeVue,
+  },
 }
 </script>
 
-<style>
-
+<style scoped>
+  canvas {
+    width: 300px!important;
+    height: 300px!important;
+  }
 </style>
