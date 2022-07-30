@@ -18,7 +18,7 @@
               <v-date-picker v-model="date" no-title @input="menu = false" locale="ja-jp"></v-date-picker>
             </v-menu>
             <ul class="red--text ml-2" v-for="error in dateError" :key="error.id"><li>{{ error }}</li></ul>
-            <v-select v-model="time" :items="times" menu-props="auto" hide-details prepend-icon="mdi-clock" single-line class="mb-5 pb-1 mt-3">
+            <v-select v-model="time" :items="times" menu-props="auto" prepend-icon="mdi-clock" single-line class="mb-5 pb-1 mt-3">
             </v-select>
             <ul class="red--text ml-2" v-for="error in dateError" :key="error.id"><li>{{ error }}</li></ul>
             <v-select v-model="number" :items= "numbers" menu-props="auto" hide-detail prepend-icon="mdi-account" class="mt-5">
@@ -82,8 +82,8 @@ export default {
         this.reservation = response.data.reservation[0];
         this.date = this.reservation.date.substr(0, 10)
         this.number = this.reservation.number + '名'
-        this.time = this.reservation.date.substr(11, 5)
-        console.log(this.date)
+        this.time =  this.$dateFns.format(new Date(this.reservation.date), 'H:mm')
+        console.log(this.reservation.date)
       })
       .catch((error) => {
         console.log(error.response);

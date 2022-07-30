@@ -35,7 +35,7 @@
                   </tr>
                   <tr>
                     <th class="text-left bg-gray">予約日</th>
-                    <td class="bg-white">{{ $dateFns.format(new Date(reservation.date.substr(0,10)), 'Y年M月d日') }}</td>
+                    <td class="bg-white">{{ $dateFns.format(new Date(reservation.date), 'Y年M月d日') }}</td>
                   </tr>
                   <tr>
                     <th class="text-left bg-gray">時間</th>
@@ -50,7 +50,7 @@
               <div class="text-center pb-3 pt-3">
                 <v-btn small color="blue accent-4 white--text" class="mr-2" :to="'/qrcode?id=' + reservation.id">QRコード</v-btn>
                 <v-btn small color="blue accent-4 white--text" class="mr-2" :to="'/edit?id=' + reservation.id">予約変更</v-btn>
-                <v-btn small color="blue accent-4 white--text" @click="openCancelOverlay(index, reservation.id)">予約を取り消す</v-btn>
+                <v-btn small color="blue accent-4 white--text" @click="openCancelOverlay(index, reservation.id)">予約取消</v-btn>
               </div>
             </v-card>
           </v-col>
