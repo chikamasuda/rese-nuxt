@@ -1,9 +1,5 @@
 <template>
   <div>
-    <div class="align-center d-flex justify-space-between mt-4 mb-5">
-      <Logo />
-      <LoginMenu />
-    </div>
     <v-row class="mb-5 justify-center pt-5">
       <v-col cols="12" xs="12" sm="9" md="6">
         <v-card class="">
