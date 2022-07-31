@@ -24,16 +24,13 @@
           <v-simple-table>
             <thead class="">
               <tr>
-                <th class="text-left">
+                <th class="text-left" width="10%">
                   ID
                 </th>
-                <th class="text-left">
+                <th class="text-left" width="70%">
                   名前
                 </th>
-                <th class="text-left">
-                  メールアドレス
-                </th>
-                <th class="text-left">
+                <th class="text-left" width="20%">
                 </th>
               </tr>
             </thead>
@@ -41,7 +38,6 @@
               <tr class="pb-5 link-items" v-for="userList in userLists" :key="userList.id">
                 <td>{{ userList.id }}</td>
                 <td>{{ userList.name }}</td>
-                <td>{{ userList.email }}</td>
                 <td class="text-right"><v-btn small color="primary" :to="'/admin/mail?id=' + userList.id">メール送信</v-btn></td>
               </tr>
             </tbody>
