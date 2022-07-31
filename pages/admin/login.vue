@@ -36,13 +36,7 @@ export default {
         password: this.password
       })
       .then((response) => {
-        this.$axios.get('/api/v1/admins')
-        .then((response) => {
           this.$router.push('/admin')
-        })
-        .catch((error) => {
-          console.log(error)
-        })
       })
       .catch((error) => {
         this.error = "エラーです。"
