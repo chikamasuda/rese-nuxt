@@ -9,12 +9,14 @@ export const mutations = {
 }
 
 export const actions = {
-  async login ({ commit }, { email, password, withCredentials },) {
-    const response = await this.$axios.post('/api/v1/admins/login', { email, password, withCredentials })
-    .catch((error) => {
-      throw error
+  async login({ commit }, { email, password },) {
+    await this.$axios.get('/sanctum/csrf-cookie').then(async (res) => {
+      const response = await this.$axios.post('/api/v1/admins/login', { email, password })
+        .catch((err) => {
+          throw err
+        })
+      commit('setAdminUser', response)
     })
-    commit('setAdminUser', response)
   },
 
   async logout({ commit }) {
