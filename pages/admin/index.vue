@@ -11,16 +11,41 @@
         <v-list>
           <v-list-item><v-list-item-title><v-icon class="mr-2">mdi-account</v-icon>{{ user.name }}</v-list-item-title></v-list-item>
           <v-divider></v-divider>
-          <v-list-item to="/admin/createOwner"><v-list-item-title>店舗代表者作成</v-list-item-title></v-list-item>
+          <v-list-item to="/admin" router exact><v-list-item-title>メール作成</v-list-item-title></v-list-item>
+          <v-list-item to="/admin/owner"><v-list-item-title>店舗代表者作成</v-list-item-title></v-list-item>
           <v-list-item @click="logout()"><v-list-item-title>ログアウト</v-list-item-title></v-list-item>
         </v-list>
       </v-menu>
     </v-toolbar>
     <div class="admin-card-area">
       <h2 class="admin-title">メール送信</h2>
-      <v-card class="admin-card pb-2">
+      <v-card class="admin-card">
         <v-card-title>ユーザー一覧</v-card-title>
-        
+          <v-simple-table>
+            <thead class="">
+              <tr>
+                <th class="text-left">
+                  No.
+                </th>
+                <th class="text-left">
+                  名前
+                </th>
+                <th class="text-left">
+                  メールアドレス
+                </th>
+                <th class="text-left">
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="pb-5 link-items">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="text-right"><v-btn small color="primary">メール送信</v-btn></td>
+              </tr>
+            </tbody>
+          </v-simple-table>
       </v-card>
     </div>
   </div>
@@ -53,21 +78,13 @@ export default {
         console.log(error)
       })
     },
-    async createOwner() { 
-      const data = {
-        name: this.name,
-        email: this.email,
-        password: this.password,
-      }
-      await this.$axios.post('/api/v1/owners', data)
+    async getUserInformation() {
+      await this.$axios.get('/api/v1/admins')
       .then((response) => {
-        this.name = '',
-        this.email = '',
-        this.password = '',
-        this.alert = true
+        this.user = response.data.admin
       })
       .catch((error) => {
-        console.log(error.response)
+        console.log(error)
       })
     }
   },

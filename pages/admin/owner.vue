@@ -12,6 +12,7 @@
           <v-list-item><v-list-item-title><v-icon class="mr-2">mdi-account</v-icon>{{ user.name }}</v-list-item-title></v-list-item>
           <v-divider></v-divider>
           <v-list-item to="/admin" router exact><v-list-item-title>メール作成</v-list-item-title></v-list-item>
+          <v-list-item to="/admin/owner"><v-list-item-title>店舗代表者作成</v-list-item-title></v-list-item>
           <v-list-item @click="logout()"><v-list-item-title>ログアウト</v-list-item-title></v-list-item>
         </v-list>
       </v-menu>

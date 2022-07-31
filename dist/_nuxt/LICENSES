@@ -1,6 +1,3 @@
-/*! qrcode.vue, Author: scopewu, MIT License: https://github.com/scopewu/qrcode.vue/blob/master/LICENSE */
-
-
 /*!
   * vue-router v3.5.4
   * (c) 2022 Evan You
@@ -25,6 +22,9 @@
  * (c) 2021 Evan You
  * @license MIT
  */
+
+
+/*! qrcode.vue, Author: scopewu, MIT License: https://github.com/scopewu/qrcode.vue/blob/master/LICENSE */
 
 
 /*!
