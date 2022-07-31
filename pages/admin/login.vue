@@ -33,7 +33,8 @@ export default {
     async login() {
       await this.$store.dispatch('adminAuth/login', {
         email: this.email,
-        password: this.password
+        password: this.password,
+        withCredentials: true
       })
       .then((response) => {
           this.$router.push('/admin')
