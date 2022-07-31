@@ -54,6 +54,7 @@ export default {
     '@nuxtjs/date-fns',
     'cookie-universal-nuxt',
     '@nuxtjs/dotenv',
+    'nuxt-client-init-module'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

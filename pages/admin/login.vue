@@ -35,7 +35,12 @@ export default {
         email: this.email,
         password: this.password
       })
-      this.$router.push('/admin')
+      .then((response) => {
+        this.$router.push('/admin')
+      })
+      .catch((error) => {
+        this.error = "エラーです。"
+      })
     },
   },
 }

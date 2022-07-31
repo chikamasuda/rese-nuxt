@@ -10,21 +10,11 @@ export const mutations = {
 
 export const actions = {
   async login ({ commit }, { email, password }) {
-    const response = await this.$axios.$post('/api/v1/admins/login', { email, password })
+    const response = await this.$axios.post('/api/v1/admins/login', { email, password })
     .catch((error) => {
       throw error
     })
     commit('setAdminUser', response)
-  },
-
-  async currentUser ({ commit }) {
-    await this.$axios.get('/api/v1/admins')
-    .then((admin_user) => {
-      commit('setAdminUser', admin_user)
-    })
-    .catch((error) => {
-      commit('setAdminUser', null)
-    })
   },
 
   async logout({ commit }) {
