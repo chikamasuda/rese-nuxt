@@ -49,12 +49,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'nuxt-client-init-module',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     '@nuxtjs/date-fns',
     'cookie-universal-nuxt',
     '@nuxtjs/dotenv',
-    'nuxt-client-init-module'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
