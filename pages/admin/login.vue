@@ -41,7 +41,7 @@ export default {
           this.$router.push('/admin')
         })
         .catch((error) => {
-          this.error = "エラーです。"
+          console.log(error)
         })
       })
       .catch((error) => {

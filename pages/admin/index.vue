@@ -25,7 +25,7 @@
             <thead class="">
               <tr>
                 <th class="text-left">
-                  No.
+                  ID
                 </th>
                 <th class="text-left">
                   名前
@@ -38,11 +38,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="pb-5 link-items">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="text-right"><v-btn small color="primary">メール送信</v-btn></td>
+              <tr class="pb-5 link-items" v-for="userList in userLists" :key="userList.id">
+                <td>{{ userList.id }}</td>
+                <td>{{ userList.name }}</td>
+                <td>{{ userList.email }}</td>
+                <td class="text-right"><v-btn small color="primary" :to="'/admin/mail?id=' + userList.id">メール送信</v-btn></td>
               </tr>
             </tbody>
           </v-simple-table>
@@ -62,6 +62,7 @@ export default {
       password: '',
       alert: false,
       user: '',
+      userLists: []
     };
   },
   methods: {
@@ -79,9 +80,9 @@ export default {
       })
     },
     async getUserInformation() {
-      await this.$axios.get('/api/v1/admins')
+      await this.$axios.get('/api/v1/admins/mails/user-list')
       .then((response) => {
-        this.user = response.data.admin
+        this.userLists = response.data.users
       })
       .catch((error) => {
         console.log(error)
@@ -90,6 +91,7 @@ export default {
   },
   created() {
     this.getAdminInformation()
+    this.getUserInformation()
   }
 }
 </script>

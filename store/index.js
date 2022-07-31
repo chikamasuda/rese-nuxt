@@ -1,5 +1,5 @@
 export const actions = {
-  async nuxtClientInit ({ commit }) {
+  async nuxtClientInit ({ commit }, context) {
     await this.$axios.get('/api/v1/admins')
       .then(response => commit('adminAuth/setAdminUser', response.data.admin))
       .catch(() => commit('adminAuth/setAdminUser', null))
