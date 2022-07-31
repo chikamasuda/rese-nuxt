@@ -28,7 +28,6 @@ export default {
   data() {
     return {
       value: `https://moonlit-fudge-322432.netlify.app/reservationDetail?id=${this.$route.query.id}`,
-      value: `shop:${this.shop}`,
       size: 300,
       shop: '',
     }
