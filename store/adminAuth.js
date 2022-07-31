@@ -20,10 +20,10 @@ export const actions = {
   async currentUser ({ commit }) {
     await this.$axios.get('/api/v1/admins')
     .then((admin_user) => {
-      commit('auth/setAdminUser', admin_user)
+      commit('setAdminUser', admin_user)
     })
     .catch((error) => {
-      commit('auth/setAdminUser', null)
+      commit('setAdminUser', null)
     })
   },
 

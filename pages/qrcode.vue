@@ -11,7 +11,7 @@
           <v-divider></v-divider>
           <v-card-text>
             <p class="text-left">QRコードをスキャンして、予約情報の確認ができます。</p>
-            <qrcode-vue :value="value" :size="size" level="H" />
+            <qrcode-vue :value="value" :size="size"  level="H" />
           </v-card-text>
           <v-btn color="black" class="white--text mb-4 pr-5 pl-5" to="/mypage">戻る</v-btn>
         </v-card>
@@ -28,7 +28,9 @@ export default {
   data() {
     return {
       value: `https://moonlit-fudge-322432.netlify.app/reservationDetail?id=${this.$route.query.id}`,
+      value: `shop:${this.shop}`,
       size: 300,
+      shop: '',
     }
   },
   components: {
