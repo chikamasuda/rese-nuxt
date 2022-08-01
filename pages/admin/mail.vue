@@ -70,11 +70,12 @@ export default {
   },
   methods: {
     async logout() {
+      const admin_token = this.$cookies.get('admin_token')
       await this.$store.dispatch('adminAuth/logout')
-      window.location.href = '/admin/login'
     },
     async getAdminInformation() {
-      await this.$axios.get('/api/v1/admins')
+      const admin_token = this.$cookies.get('admin_token')
+      await this.$axios.get('/api/v1/admins', { headers: { Authorization: `Bearer ${admin_token}` } })
       .then((response) => {
         this.user = response.data.admin
       })
@@ -83,7 +84,8 @@ export default {
       })
     },
     async getUserInformation() {
-      await this.$axios.get('/api/v1/admins/mails/user-list')
+      const admin_token = this.$cookies.get('admin_token')
+      await this.$axios.get('/api/v1/admins/mails/user-list', { headers: { Authorization: `Bearer ${admin_token}` } })
       .then((response) => {
         this.userLists = response.data.users
       })
@@ -92,7 +94,10 @@ export default {
       })
     },
     async getUserDetailInformation() {
-      await this.$axios.get(`api/v1/admins/mails/user/${this.$route.query.id}`)
+      const admin_token = this.$cookies.get('admin_token')
+      await this.$axios.get(`api/v1/admins/mails/user/${this.$route.query.id}`, {
+        headers: { Authorization: `Bearer ${admin_token}` } 
+      })
       .then((response) => {
         this.mailUser = response.data.user[0]
         console.log(this.mailUser)
@@ -107,7 +112,8 @@ export default {
         title: this.title,
         content: this.content,
       }
-      await this.$axios.post('/api/v1/admins/mails/send', data)
+      const admin_token = this.$cookies.get('admin_token')
+      await this.$axios.post('/api/v1/admins/mails/send', data, { headers: { Authorization: `Bearer ${admin_token}` } })
       .then((response) => {
         this.title = '',
         this.content = '',

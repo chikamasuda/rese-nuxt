@@ -55,11 +55,13 @@ export default {
   },
   methods: {
     async logout() {
-      await this.$store.dispatch('adminAuth/logout')
+      const admin_token = this.$cookies.get('admin_token')
+      await this.$store.dispatch('adminAuth/logout', { headers: { Authorization: `Bearer ${admin_token}` } })
       window.location.href = '/admin/login'
     },
     async getAdminInformation() {
-      await this.$axios.get('/api/v1/admins')
+      const admin_token = this.$cookies.get('admin_token')
+      await this.$axios.get('/api/v1/admins', { headers: { Authorization: `Bearer ${admin_token}` } })
       .then((response) => {
         this.user = response.data.admin
       })
@@ -73,7 +75,8 @@ export default {
         email: this.email,
         password: this.password,
       }
-      await this.$axios.post('/api/v1/owners', data)
+      const admin_token = this.$cookies.get('admin_token')
+      await this.$axios.post('/api/v1/owners', data, { headers: { Authorization: `Bearer ${admin_token}` } })
       .then((response) => {
         this.name = '',
         this.email = '',
