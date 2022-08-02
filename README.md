@@ -8,6 +8,9 @@
 
 ## WebアプリケーションURL  
 https://moonlit-fudge-322432.netlify.app/  
+※テストユーザーアカウント  
+Email: rese.testuser@gmail.com  
+Password: testtest
 
 ## バックエンドリポジトリ  
 https://github.com/chikamasuda/rese-laravel
