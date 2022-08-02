@@ -7,7 +7,10 @@
 <img width="1440" alt="スクリーンショット 2022-07-13 11 19 22" src="https://user-images.githubusercontent.com/66733811/178637349-ae818951-bbdd-4290-9ead-6d77d18a4bda.png">
 
 ## WebアプリケーションURL  
-https://moonlit-fudge-322432.netlify.app/  
+https://moonlit-fudge-322432.netlify.app/ 
+※テストユーザーアカウント  
+Email:rese.testuser@gmail.com  
+Password: testtest
 
 ## バックエンドリポジトリ  
 https://github.com/chikamasuda/rese-laravel
