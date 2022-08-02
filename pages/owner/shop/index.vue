@@ -1,11 +1,11 @@
 <template>
   <div>
     <v-card>
-      <v-card-title class="">
-        店舗一覧
+      <v-card-title class="align-center">
+        店舗情報設定
+        <v-btn to="/owner/shop/create" color="primary" class="mb-3 ml-5 mt-2"><v-icon>mdi-plus</v-icon>店舗登録</v-btn>
       </v-card-title>
       <v-card-text>まだ店舗の登録はされていません。</v-card-text>
-      <v-btn color="primary" class="mb-3 ml-5"><v-icon>mdi-plus</v-icon>店舗登録</v-btn>
     </v-card>
   </div>
 </template>
@@ -13,14 +13,10 @@
 <script>
 export default {
   layout: 'ownerMenuBar',
+  middleware: 'ownerAuth',
   data() {
     return {
       shopList: [],
-    }
-  },
-  computed: {
-    user() {
-      return this.$store.state.ownerAuth.currentUser
     }
   },
   methods: {

@@ -35,7 +35,7 @@
         <h1 class="menu-title">Rese</h1>
       <v-spacer />
         <div v-if="user">
-          <div class="mr-5 user">{{ user.name }}</div>
+          <div class="mr-5 user">{{ shop.name }}</div>
         </div>
     </v-app-bar>
     <!-- コンテンツ部分 -->
@@ -49,27 +49,44 @@
 
 <script>
 export default {
+  middleware: 'ownerAuth',
   data () {
     return {
       clipped: false,
       drawer: true,
       fixed: false,
       miniVariant: false,
-      name: "",
+      user: [],
+      shop: {},
     }
   },
-  computed: {
-    user() {
-      return this.$store.state.ownerAuth.owner_user
-    }
-  },
+
   methods: {
-    async getOwnerInformation() {
-      await this.$store.dispatch('ownerAuth/currentUser')
-    },
     async logout() {
       await this.$store.dispatch('ownerAuth/logout')
-      window.location.href = '/owner/login'
+      .then((response) => {
+        window.location.href = '/owner/login'
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    },
+    async getOwnerInformation() {
+      await this.$axios.get('/api/v1/owners')
+      .then((response) => {
+        this.user = response.data.owner
+        this.$axios.get(`/api/v1/owners/${this.user.id}/shops`)
+        .then((response) => {
+          this.shop = response.data.shop[0]
+          console.log(shop)
+        })
+        .catch((error) => {
+          console.log(error.response)
+        })
+      })
+      .catch((error) => {
+        console.log(error.response)
+      })
     },
   },
   created() {

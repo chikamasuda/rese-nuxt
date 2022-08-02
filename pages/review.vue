@@ -87,6 +87,10 @@ export default {
   },
   created() {
     this.getShop()
+    if (this.$auth.loggedIn) {
+      const user_token = this.$cookies.get('auth._token.local')
+      this.$axios.defaults.headers.common['Authorization'] = user_token
+    }
   }
 }
 </script>

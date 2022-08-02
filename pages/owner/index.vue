@@ -21,7 +21,7 @@
       </thead>
         <tbody>
           <tr class="pb-5 link-items" v-for="reservation in reservations" :key="reservation.id">
-            <td>{{ $dateFns.format(new Date(reservation.date.substr(0,15)), 'Y年M月d日  H:mm') }}</td>
+            <td>{{ $dateFns.format(new Date(reservation.date), 'Y年M月d日  H:mm') }}</td>
             <td>{{ reservation.number }}</td>
             <td>{{ reservation.users.name }}</td>
           </tr>
@@ -40,11 +40,7 @@ export default {
       reservations: [],
       ownerId: '',
       reservationMessage: '',
-    }
-  },
-  computed: {
-    user() {
-      return this.$store.state.ownerAuth.currentUser
+      date: '',
     }
   },
   methods: {
@@ -55,7 +51,6 @@ export default {
         this.$axios.get(`/api/v1/owners/${this.ownerId}/reservations`)
         .then((response) => {
           this.reservations = response.data.reservations
-          console.log(this.reservations)
           if(this.reservations.length == 0) {
             this.reservationMessage = '予約はありません。'
           }

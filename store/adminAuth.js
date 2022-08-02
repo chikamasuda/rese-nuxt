@@ -3,7 +3,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setAdminUser (state, admin_user) {
+  setAdminUser(state, admin_user) {
     state.admin_user = admin_user
   },
 }
@@ -20,11 +20,10 @@ export const actions = {
 
   async logout({ commit }) {
     const admin_token = this.$cookies.get('admin_token')
-    await this.$axios.delete('/api/v1/admins/logout',  { headers: { Authorization: `Bearer ${admin_token}` } })
+    await this.$axios.delete('/api/v1/admins/logout')
     .catch((error) => {
       console.log(error)
     })
     commit('setAdminUser', null)
-    window.location.href = '/admin/login'
   }
 }

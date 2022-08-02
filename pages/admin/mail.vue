@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-toolbar color="white" class="pr-3">
-      <v-toolbar-title class="title ml-4">Rese管理画面</v-toolbar-title>
+      <v-toolbar-title class="title ml-4"  to="/admin">Rese管理画面</v-toolbar-title>
       <v-spacer></v-spacer>
       <div>メニュー</div>
       <v-menu offset-y>
@@ -70,12 +70,11 @@ export default {
   },
   methods: {
     async logout() {
-      const admin_token = this.$cookies.get('admin_token')
       await this.$store.dispatch('adminAuth/logout')
+      window.location.href = '/admin/login'
     },
     async getAdminInformation() {
-      const admin_token = this.$cookies.get('admin_token')
-      await this.$axios.get('/api/v1/admins', { headers: { Authorization: `Bearer ${admin_token}` } })
+      await this.$axios.get('/api/v1/admins')
       .then((response) => {
         this.user = response.data.admin
       })
@@ -84,8 +83,7 @@ export default {
       })
     },
     async getUserInformation() {
-      const admin_token = this.$cookies.get('admin_token')
-      await this.$axios.get('/api/v1/admins/mails/user-list', { headers: { Authorization: `Bearer ${admin_token}` } })
+      await this.$axios.get('/api/v1/admins/mails/user-list')
       .then((response) => {
         this.userLists = response.data.users
       })
@@ -94,10 +92,7 @@ export default {
       })
     },
     async getUserDetailInformation() {
-      const admin_token = this.$cookies.get('admin_token')
-      await this.$axios.get(`api/v1/admins/mails/user/${this.$route.query.id}`, {
-        headers: { Authorization: `Bearer ${admin_token}` } 
-      })
+      await this.$axios.get(`api/v1/admins/mails/user/${this.$route.query.id}`)
       .then((response) => {
         this.mailUser = response.data.user[0]
         console.log(this.mailUser)
@@ -112,8 +107,7 @@ export default {
         title: this.title,
         content: this.content,
       }
-      const admin_token = this.$cookies.get('admin_token')
-      await this.$axios.post('/api/v1/admins/mails/send', data, { headers: { Authorization: `Bearer ${admin_token}` } })
+      await this.$axios.post('/api/v1/admins/mails/send', data)
       .then((response) => {
         this.title = '',
         this.content = '',

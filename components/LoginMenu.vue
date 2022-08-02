@@ -56,7 +56,7 @@ export default {
   methods: {
     async logout() {
       try {
-        await this.$auth.logout('user');
+        await this.$auth.logout;
         window.location.href = '/login'
       } catch (error) {
         console.log(error);

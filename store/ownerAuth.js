@@ -9,26 +9,18 @@ export const mutations = {
 }
 
 export const actions = {
-  async login ({ commit }, { email, password }) {
+  async login({ commit }, { email, password }) {
     const response = await this.$axios.post('/api/v1/owners/login', { email, password })
     .catch((error) => {
       throw error
     })
     commit('setOwnerUser', response)
-  },
-
-  async currentUser ({ commit }) {
-    await this.$axios.get('/api/v1/owners')
-    .then((response) => {
-      commit('setOwnerUser', response.data.owner)
-    })
-    .catch((error) => {
-      commit('setOwnerUser', null)
-    })
+    this.$cookies.set('owner_token', response.data.token)
   },
 
   async logout({ commit }) {
-    await this.$axios.post('/api/v1/owners/logout')
+    const owner_token = this.$cookies.get('owner_token')
+    await this.$axios.delete('/api/v1/owners/logout', { headers: { Authorization: `Bearer ${owner_token}` }})
     .catch((error) => {
       throw error
     })
