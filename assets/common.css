@@ -151,6 +151,10 @@ a {
     min-height: 44px;
   }
 
+  .container {
+    width: 90%!important;
+  }
+
   /** 会員登録、ログイン **/
   .auth-card {
     margin-top: 50px;

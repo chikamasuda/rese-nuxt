@@ -17,17 +17,8 @@
             <span v-if="shop.genre">#{{ shop.genre.name }}</span>
           </div>
           <div class="d-flex align-center">
-            <v-rating
-              v-model="rating"
-              :length="length"
-              color="orange"
-              background-color="grey lighten-1"
-              empty-icon="$ratingFull"
-              half-increments
-              middle
-              class="star-display p-0"
-              v-show="star"
-            ></v-rating>
+            <v-rating v-model="rating" :length="length" color="orange" background-color="grey lighten-1" empty-icon="$ratingFull" half-increments middle class="star-display p-0" v-show="star">
+            </v-rating>
             <span class="font-weight-bold ml-2 mt-1 mr-1" v-show="star">{{ rating }}</span>
             <span class="mt-1" v-show="star">({{ reviews.length }}件)</span>
             <v-btn v-if="star && this.reservationCount > this.reviewCount" small color="orange darken-1" class="ml-3 white--text" :to="`/review?shop_id=${shop.id}&shop_name=${shop.name}`">
@@ -53,57 +44,24 @@
             <v-card-title>予約</v-card-title>
             <v-divider></v-divider>
             <v-card-text>
-              <v-menu
-                v-model="menu"
-                :close-on-content-click="false"
-                :nudge-right="40"
-                transition="scale-transition"
-                offset-y
-                min-width="auto"
-              >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  v-model="computedDateFormatted"
-                  prepend-icon="mdi-calendar"
-                  readonly
-                  placeholder="予約日"
-                  v-bind="attrs"
-                  v-on="on"
-                ></v-text-field>
-              </template>
-              <v-date-picker
-                v-model="date"
-                no-title
-                @input="menu = false"
-                locale="ja-jp"
-              ></v-date-picker>
+              <v-menu v-model="menu" :close-on-content-click="false" :nudge-right="40" transition="scale-transition" offset-y min-width="auto">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field v-model="computedDateFormatted" prepend-icon="mdi-calendar" readonly placeholder="予約日" v-bind="attrs" v-on="on">
+                  </v-text-field>
+                </template>
+              <v-date-picker v-model="date" no-title @input="menu = false" locale="ja-jp"></v-date-picker>
               </v-menu>
               <ul class="red--text ml-2" v-for="error in dateError" :key="error.id">
                 <li>{{ error }}</li>
               </ul>
-              <v-select
-              v-model="time"
-              :items="times"
-              menu-props="auto"
-              placeholder="予約時間"
-              hide-details
-              prepend-icon="mdi-clock"
-              single-line
-              class="pb-1 mt-4"
-              ></v-select>
+              <v-select v-model="time" :items="times" menu-props="auto" placeholder="予約時間" hide-details prepend-icon="mdi-clock" single-line class="pb-1 mt-4">
+              </v-select>
               <ul class="red--text ml-2" v-for="error in dateError" :key="error.id">
                 <li>{{ error }}</li>
               </ul>
-              <v-select
-                v-model="number"
-                :items= "numbers"
-                menu-props="auto"
-                placeholder="人数"
-                hide-details
-                prepend-icon="mdi-account"
-                single-line
-                class="mt-5"
-              ></v-select>
+              <v-select v-model="number" :items= "numbers" menu-props="auto" placeholder="人数" hide-details prepend-icon="mdi-account"
+                single-line class="mt-5">
+              </v-select>
               <ul class="red--text ml-2" v-for="error in numberError" :key="error.id">
                 <li>{{ error }}</li>
               </ul>
