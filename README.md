@@ -70,7 +70,8 @@ https://github.com/chikamasuda/rese-laravel
 <img width="647" alt="スクリーンショット 2022-08-04 21 29 41" src="https://user-images.githubusercontent.com/66733811/182847359-95530068-9747-4e65-a21c-595cd6288a90.png">  
 
 ## ER図
-<img width="1053" alt="スクリーンショット 2022-08-04 21 34 00" src="https://user-images.githubusercontent.com/66733811/182848175-62062328-9132-4494-bef2-884f6b38d407.png">
+<img width="1200" alt="スクリーンショット 2022-08-04 21 46 01" src="https://user-images.githubusercontent.com/66733811/182850480-5b5735a0-440e-4c2a-8178-cbae81a4e442.png">
+
 
 ## 環境構築
 
@@ -97,5 +98,14 @@ yarn dev
 と出るので表示されるURLにアクセス  
 
 ## テストユーザーアカウント  
+※ユーザー  
 Email: rese.testuser@gmail.com  
-Password: testtest
+Password: testtest  
+
+※管理者  
+Email: admin1@gmail.com  
+Password: admin1234  
+
+※店舗代表者  
+Email: owner1@gmail.com  
+Password: owner1234  
