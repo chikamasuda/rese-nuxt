@@ -52,8 +52,8 @@ https://github.com/chikamasuda/rese-laravel
 ・Vuetify 2.6.1  
 
 ### バックエンド  
-・PHP 8.0.2
-・Laravel 9.11
+・PHP 8.0.2  
+・Laravel 9.11  
 ・league/flysystem-aws-s3-v3 3.0    
 ・Mysql 8.0  
 
