@@ -97,7 +97,7 @@ yarn dev
 
 と出るので表示されるURLにアクセス  
 
-## テストユーザーアカウント  
+## アカウントの種類・テストユーザーアカウント  
 ※ユーザー  
 Email: rese.testuser@gmail.com  
 Password: testtest  
