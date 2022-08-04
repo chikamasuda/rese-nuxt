@@ -22,7 +22,7 @@
         <label for="">店舗説明文</label>
         <v-textarea v-model="description" outlined></v-textarea>
         <div class="text-center mt-3">
-          <v-btn class="primary" type="submit" @click="updateShop(shop.id)">店舗情報を更新</v-btn>
+          <v-btn class="primary" type="submit" @click="updateShop()">店舗情報を更新</v-btn>
         </div>
       </v-card-text>
     </v-card>
@@ -88,13 +88,12 @@ export default {
         header: {
           "Content-Type": "multipart/form-data",
         },
-      }
-      const url = "/api/v1/shops/" + id
-      await this.$axios.post(url,formData, config)
+      } 
+      await this.$axios.post("/api/v1/shops/" + this.shop.id,formData, config)
       .then((response) => {
+        this.getShopInformation()
         this.image = "",
         this.alert = true
-        this.getShopInformation()
       })
       .catch((error) => {
         console.log(error.response);
