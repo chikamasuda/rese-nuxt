@@ -72,9 +72,9 @@ https://github.com/chikamasuda/rese-laravel
 ## ER図
 <img width="1053" alt="スクリーンショット 2022-08-04 21 34 00" src="https://user-images.githubusercontent.com/66733811/182848175-62062328-9132-4494-bef2-884f6b38d407.png">
 
-# 環境構築
+## 環境構築
 
-## 前提条件　　
+### 前提条件　　
 ・node.jsがインストールされていること。  
 
 ①git cloneする。
