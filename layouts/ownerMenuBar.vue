@@ -34,8 +34,11 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
         <h1 class="menu-title">Rese</h1>
       <v-spacer />
-        <div v-if="user">
+        <div v-if="shop">
           <div class="mr-5 user">{{ shop.name }}</div>
+        </div>
+        <div v-if="!shop && user">
+          <div class="mr-5 user">{{ user.name }}</div>
         </div>
     </v-app-bar>
     <!-- コンテンツ部分 -->
@@ -91,6 +94,10 @@ export default {
   },
   created() {
     this.getOwnerInformation()
+    if (this.$store.state.ownerAuth.owner_user) {
+      const owner_token = this.$cookies.get('owner_token')
+      this.$axios.defaults.headers.common['Authorization'] =  `Bearer ${owner_token}`
+    }
   }
 }
 </script>

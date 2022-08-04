@@ -8,22 +8,22 @@
       <v-simple-table v-if="reservations.length > 0">
       <thead class="">
         <tr>
-          <th class="text-left">
+          <th class="text-left reservation-row">
             予約日時
           </th>
-          <th class="text-left">
-            人数
-          </th>
-          <th class="text-left">
+          <th class="text-left reservation-row">
             予約者名
+          </th>
+          <th class="text-left reservation-row">
+            人数
           </th>
         </tr>
       </thead>
         <tbody>
           <tr class="pb-5 link-items" v-for="reservation in reservations" :key="reservation.id">
-            <td>{{ $dateFns.format(new Date(reservation.date), 'Y年M月d日  H:mm') }}</td>
-            <td>{{ reservation.number }}</td>
+            <td>{{ $dateFns.format(new Date(reservation.date), 'M月d日  H:mm') }}</td>
             <td>{{ reservation.users.name }}</td>
+            <td>{{ reservation.number }}</td>
           </tr>
         </tbody>
     </v-simple-table>
@@ -70,6 +70,10 @@ export default {
   },
   created() {
     this.getReservationList()
+    if (this.$store.state.ownerAuth.owner_user) {
+      const owner_token = this.$cookies.get('owner_token')
+      this.$axios.defaults.headers.common['Authorization'] =  `Bearer ${owner_token}`
+    }
   }
 }
 </script>
@@ -80,6 +84,9 @@ export default {
   margin: 0 auto;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+.reservation-row {
+  width: 25%;
 }
 @media screen and (max-width: 768px) {
   .v-card {

@@ -46,12 +46,14 @@ export default {
       })
       .catch((error) => {
         console.log(error)
-          if(error.response.status == "401") {
-            this.error = error.response.data.message
-          }
+        if(error.response.status == 401) {
+          this.error = error.response.data.message
+        } else {
           this.emailError = error.response.data.data.errors['email'];
           this.passwordError = error.response.data.data.errors['password'];
-      })
+        }
+        
+    })
     },
   },
 }
