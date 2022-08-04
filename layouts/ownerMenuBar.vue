@@ -67,12 +67,7 @@ export default {
   methods: {
     async logout() {
       await this.$store.dispatch('ownerAuth/logout')
-      .then((response) => {
-        window.location.href = '/owner/login'
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+      window.location.href = '/owner/login'
     },
     async getOwnerInformation() {
       await this.$axios.get('/api/v1/owners')

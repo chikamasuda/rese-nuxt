@@ -23,12 +23,7 @@ export default {
   middleware: 'adminAuth',
   data() {
     return {
-      name: '',
-      email: '',
-      password: '',
-      alert: false,
       user: '',
-      userLists: []
     };
   },
   methods: {
