@@ -42,29 +42,35 @@ https://github.com/chikamasuda/rese-laravel
 ・管理画面から利用者にメールを送信  
 ・タスクスケジューラーを利用して、予約当日の朝にリマインダーメール送信  
 ・QRコード  
-・Dockerでの環境構築 
 
 ## 使用技術
 
-###フロントエンド  
+### フロントエンド  
 ・HTML/CSS  
 ・JavaScript  
-・Nuxt.js  
-・Vuetify 
+・Nuxt.js 2.15.8  
+・Vuetify 2.6.1  
 
-###バックエンド  
-PHP 8.0  
-Laravel 9  
-league/flysystem-aws-s3-v3 1.0.29  
-Mysql 8.0.23  
+### バックエンド  
+・PHP 8.0.2
+・Laravel 9.11
+・league/flysystem-aws-s3-v3 3.0    
+・Mysql 8.0  
 
-###インフラ
+### インフラ
+・Netlify  
+・Heroku  
+・JawsDB MySQL(Heroku)  
+・AWS S3  
+・Docker  
 
-Netlify  
-Heroku  
-JawsDB MySQL(Heroku)  
-AWS S3  
-Docker  
+## テーブル設計  
+<img width="658" alt="スクリーンショット 2022-08-04 21 29 16" src="https://user-images.githubusercontent.com/66733811/182847341-60973e7e-0eab-431f-bda5-03a37abda152.png">
+<img width="647" alt="スクリーンショット 2022-08-04 21 29 31" src="https://user-images.githubusercontent.com/66733811/182847348-4af98e34-36a8-4354-94a1-cdd655ad7c90.png">
+<img width="647" alt="スクリーンショット 2022-08-04 21 29 41" src="https://user-images.githubusercontent.com/66733811/182847359-95530068-9747-4e65-a21c-595cd6288a90.png">  
+
+## ER図
+<img width="1053" alt="スクリーンショット 2022-08-04 21 34 00" src="https://user-images.githubusercontent.com/66733811/182848175-62062328-9132-4494-bef2-884f6b38d407.png">
 
 # 環境構築
 
