@@ -98,14 +98,14 @@ yarn dev
 と出るので表示されるURLにアクセス  
 
 ## アカウントの種類・テストユーザーアカウント  
-※ユーザー  
+※ユーザー(飲食店の検索・お気に入り・予約をすることができます。)  
 Email: rese.testuser@gmail.com  
 Password: testtest  
 
-※管理者  
+※管理者(店舗代表者の作成とユーザーへのメール送信ができます。)     
 Email: admin1@gmail.com  
 Password: admin1234  
 
-※店舗代表者  
+※店舗代表者(店舗の管理と予約一覧を確認できます。)  
 Email: owner1@gmail.com  
 Password: owner1234  
