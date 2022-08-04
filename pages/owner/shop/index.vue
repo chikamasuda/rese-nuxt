@@ -84,24 +84,17 @@ export default {
       formData.append("area", this.area)
       formData.append("genre", this.genre)
       formData.append("description", this.description)
-      // const data = {
-      //   owner_id: this.owner.id,
-      //   name: this.name,
-      //   area: this.area,
-      //   genre: this.genre,
-      //   description: this.description
-      // }
       const config = {
         header: {
           "Content-Type": "multipart/form-data",
         },
       }
       const url = "/api/v1/shops/" + id
-      await this.$axios.put(url,formData, config)
+      await this.$axios.post(url,formData, config)
       .then((response) => {
-        this.getShopInformation()
         this.image = "",
         this.alert = true
+        this.getShopInformation()
       })
       .catch((error) => {
         console.log(error.response);

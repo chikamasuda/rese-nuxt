@@ -2,7 +2,7 @@
   <div>
     <v-card>
       <v-card-title class="align-center">
-        店舗情報作成
+        店舗登録
       </v-card-title>
       <v-alert type="success" color="green" v-if="alert" dismissible v-model="alert">店舗情報を作成しました。</v-alert>
       <v-card-text>
@@ -69,13 +69,7 @@ export default {
       }
       await this.$axios.post('/api/v1/shops',formData, config)
       .then((response) => {
-        this.name = '',
-        this.area = '',
-        this.description = '',
-        this.genre = '',
-        this.owner_id = '',
-        this.image = '',
-        this.alert = true
+        this.$router.push('/owner/shop/createDone')
       })
       .catch((error) => {
         console.log(error.response);

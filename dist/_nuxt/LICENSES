@@ -24,6 +24,9 @@
  */
 
 
+/*! qrcode.vue, Author: scopewu, MIT License: https://github.com/scopewu/qrcode.vue/blob/master/LICENSE */
+
+
 /*!
  * vue-client-only v0.0.0-semantic-release
  * (c) 2021-present egoist <0x142857@gmail.com>
@@ -35,6 +38,3 @@
  * (c) 2018-present egoist <0x142857@gmail.com>
  * Released under the MIT License.
  */
-
-
-/*! qrcode.vue, Author: scopewu, MIT License: https://github.com/scopewu/qrcode.vue/blob/master/LICENSE */
