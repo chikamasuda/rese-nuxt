@@ -18,7 +18,7 @@ https://moonlit-fudge-322432.netlify.app/owner
 
 ※管理者ページTOP(ログインページはhttps://moonlit-fudge-322432.netlify.app/admin/login)  
 https://moonlit-fudge-322432.netlify.app/admin  
-※管理者ページはREAD MEの一番下に書いてあるテストユーザーアカウントでログインをお願いします。  
+※管理者ページはREAD MEの一番下に書いてあるテストアカウントでログインをお願いします。  
 
 ## 他のリポジトリ(バックエンドリポジトリ）    
 https://github.com/chikamasuda/rese-laravel  
