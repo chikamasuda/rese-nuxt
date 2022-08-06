@@ -7,7 +7,7 @@
 <img width="1440" alt="スクリーンショット 2022-07-13 11 19 22" src="https://user-images.githubusercontent.com/66733811/178637349-ae818951-bbdd-4290-9ead-6d77d18a4bda.png">  
 
 ## 作成した目的  
-プログラミングスクールの模擬案件で、実用的なアプリケーションの開発をしたいと考え作成しました。  
+Nuxt.jsとLaravelAPIを学び、アウトプットとして実用的なアプリケーションの開発をしたいと考え作成しました。  
 
 ## WebアプリケーションURL  
 ※ユーザーページTOP(ログインページはhttps://moonlit-fudge-322432.netlify.app/login)    
@@ -71,7 +71,7 @@ https://github.com/chikamasuda/rese-laravel
 <img width="647" alt="スクリーンショット 2022-08-04 21 29 41" src="https://user-images.githubusercontent.com/66733811/182847359-95530068-9747-4e65-a21c-595cd6288a90.png">  
 
 ## ER図
-<img width="1200" alt="スクリーンショット 2022-08-04 21 46 01" src="https://user-images.githubusercontent.com/66733811/182850480-5b5735a0-440e-4c2a-8178-cbae81a4e442.png">
+<img width="1188" alt="スクリーンショット 2022-08-07 1 26 19" src="https://user-images.githubusercontent.com/66733811/183257629-f7dc6791-6385-4ba5-a5b4-d1d991c22e3a.png">
 
 
 ## 環境構築
