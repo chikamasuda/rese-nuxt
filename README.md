@@ -71,7 +71,8 @@ https://github.com/chikamasuda/rese-laravel
 <img width="647" alt="スクリーンショット 2022-08-04 21 29 41" src="https://user-images.githubusercontent.com/66733811/182847359-95530068-9747-4e65-a21c-595cd6288a90.png">  
 
 ## ER図
-<img width="1188" alt="スクリーンショット 2022-08-07 1 26 19" src="https://user-images.githubusercontent.com/66733811/183257629-f7dc6791-6385-4ba5-a5b4-d1d991c22e3a.png">
+<img width="992" alt="スクリーンショット 2022-08-07 1 29 19" src="https://user-images.githubusercontent.com/66733811/183257664-780aed20-744e-4800-b798-28780cb05b66.png">
+
 
 
 ## 環境構築
