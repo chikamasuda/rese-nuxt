@@ -73,29 +73,6 @@ https://github.com/chikamasuda/rese-laravel
 ## ER図
 <img width="1030" alt="スクリーンショット 2022-08-07 1 34 07" src="https://user-images.githubusercontent.com/66733811/183257818-d00b9dc5-f960-4096-9d97-d7bbe94db841.png">
 
-## 環境構築
-
-### 前提条件　　
-・node.jsがインストールされていること。  
-
-①git cloneする。
-```
-git clone https://github.com/chikamasuda/rese-nuxt.git
-```
-
-②rese-nuxtのディレクトリまで移動し、依存関係をインストール
-```
-yarn install
-```
-
-⓷クローンしたプロジェクトに移動し、ローカルサーバーを立ち上げ
-```
-yarn dev
-``` 
-
-④Listening: http://localhost:3000/　　　　
-
-と出るので表示されるURLにアクセス  
 
 ## アカウントの種類・テストユーザーアカウント  
 ※ユーザー(飲食店の検索・お気に入り・予約をすることができます。)  
