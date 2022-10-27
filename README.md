@@ -80,13 +80,9 @@ Email: rese.testuser@gmail.com
 Password: testtest  
 
 ※管理者(店舗代表者の作成とユーザーへのメール送信ができます。)  
-・管理者1  
 Email: admin1@gmail.com  
 Password: admin1234  
-
-・管理者2    
-Email: admin2@gmail.com  
-Password: admin1234  
+ord: admin1234  
 
 ※店舗代表者(店舗の管理と予約一覧を確認できます。)  
 Email: owner1@gmail.com  
