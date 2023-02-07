@@ -9,7 +9,7 @@
 ## 作成した目的  
 Nuxt.jsとLaravelAPIを学び、アウトプットとして実用的なアプリケーションの開発をしたいと考え作成しました。  
 
-## WebアプリケーションURL  
+## WebアプリケーションURL(現在停止中です。)  
 ※ユーザーページTOP(ログインページはhttps://moonlit-fudge-322432.netlify.app/login)    
 https://moonlit-fudge-322432.netlify.app/    
 
